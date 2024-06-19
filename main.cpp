@@ -38,7 +38,7 @@ int main()
 		settings.Title("Arcanum Tutorial");
 		settings.WindowSize(Point(800, 600));
 
-		Engine game(&settings);
+		Engine game(settings);
 		game.Run();
 	}
 	catch (const std::runtime_error& error)

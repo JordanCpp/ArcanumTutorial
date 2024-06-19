@@ -24,29 +24,6 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Readers_MemoryReader_hpp
-#define Arcanum_Readers_MemoryReader_hpp
+#include <Arcanum/Formats/Art.hpp>
 
-#include <cstdint>
-#include <Arcanum/Common/Vector.hpp>
-
-namespace Arcanum
-{
-	class MemoryReader
-	{
-	public:
-		MemoryReader(const Vector<uint8_t>& buffer);
-		void Read(void* dst, size_t size);
-		uint8_t u8();
-		int8_t i8();
-		uint16_t u16();
-		int16_t i16();
-		uint32_t u32();
-		int32_t i32();
-	private:
-		size_t                 _Offset;
-		const Vector<uint8_t>& _Buffer;
-	};
-}
-
-#endif 
+using namespace Arcanum;

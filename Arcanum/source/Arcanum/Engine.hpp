@@ -36,11 +36,11 @@ namespace Arcanum
 	class Engine
 	{
 	public:
-		Engine(Settings* settings);
+		Engine(Settings& settings);
 		~Engine();
 		void Run();
 	private:
-		Settings*   _Settings;
+		Settings&   _Settings;
 		ICanvas*    _Canvas;
 		FileLoader  _FileLoader;
 		FileManager _FileManager;

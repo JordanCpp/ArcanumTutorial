@@ -24,28 +24,48 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Readers_MemoryReader_hpp
-#define Arcanum_Readers_MemoryReader_hpp
+#ifndef Arcanum_Formats_Art_hpp
+#define Arcanum_Formats_Art_hpp
 
 #include <cstdint>
-#include <Arcanum/Common/Vector.hpp>
 
 namespace Arcanum
 {
-	class MemoryReader
+	struct ArtColor
 	{
-	public:
-		MemoryReader(const Vector<uint8_t>& buffer);
-		void Read(void* dst, size_t size);
-		uint8_t u8();
-		int8_t i8();
-		uint16_t u16();
-		int16_t i16();
-		uint32_t u32();
-		int32_t i32();
-	private:
-		size_t                 _Offset;
-		const Vector<uint8_t>& _Buffer;
+		uint8_t b = 0;
+		uint8_t	g = 0;
+		uint8_t	r = 0;
+		uint8_t	a = 0;
+	};
+
+	struct ArtTable
+	{
+		ArtColor colors[256] = { 0 };
+	};
+
+	struct ArtHeader
+	{
+		uint32_t h0[3]            = { 0 };
+		ArtColor stupid_color[4]  = { 0 };
+
+		uint32_t frame_num_low    = 0;
+		uint32_t frame_num        = 0;
+
+		ArtColor palette_data1[8] = { 0 };
+		ArtColor palette_data2[8] = { 0 };
+		ArtColor palette_data3[8] = { 0 };
+	};
+
+	struct ArtFrameHeader
+	{
+		uint32_t width  = 0;
+		uint32_t height = 0;
+		uint32_t size   = 0;
+		int c_x         = 0;
+		int c_y         = 0;
+		int d_x         = 0;
+		int d_y         = 0;
 	};
 }
 

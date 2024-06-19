@@ -25,10 +25,76 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include <Arcanum/Readers/MemoryReader.hpp>
+#include <cstring>
+#include <cassert>
 
 using namespace Arcanum;
 
 MemoryReader::MemoryReader(const Vector<uint8_t>& buffer) :
+	_Offset(0),
 	_Buffer(buffer)
 {
+}
+
+void MemoryReader::Read(void* dst, size_t size)
+{
+	assert(_Offset + size <= _Buffer.size());
+
+	memcpy(dst, &_Buffer[_Offset], size);
+
+	_Offset += size;
+}
+
+uint8_t MemoryReader::u8()
+{
+	uint8_t result = 0;
+
+	Read(&result, sizeof(uint8_t));
+
+	return result;
+}
+
+int8_t MemoryReader::i8()
+{
+	int8_t result = 0;
+
+	Read(&result, sizeof(int8_t));
+
+	return result;
+}
+
+uint16_t MemoryReader::u16()
+{
+	uint16_t result = 0;
+
+	Read(&result, sizeof(uint16_t));
+
+	return result;
+}
+
+int16_t MemoryReader::i16()
+{
+	int16_t result = 0;
+
+	Read(&result, sizeof(int16_t));
+
+	return result;
+}
+
+uint32_t MemoryReader::u32()
+{
+	uint32_t result = 0;
+
+	Read(&result, sizeof(uint32_t));
+
+	return result;
+}
+
+int32_t MemoryReader::i32()
+{
+	int32_t result = 0;
+
+	Read(&result, sizeof(int32_t));
+
+	return result;
 }
