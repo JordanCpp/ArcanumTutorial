@@ -24,18 +24,15 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include<Arcanum/Managers/FileManager.hpp>
+#ifndef Arcanum_Common_Vector_hpp
+#define Arcanum_Common_Vector_hpp
 
-using namespace Arcanum;
+#include <vector>
 
-FileManager::FileManager(FileLoader& fileLoader) :
-	_FileLoader(fileLoader)
+namespace Arcanum 
 {
+	template<class T>
+	using Vector = std::vector<T>;
 }
 
-const Vector<uint8_t>& FileManager::File(const String& path)
-{
-	_FileLoader.Reset(path);
-
-	return _FileLoader.Content();
-}
+#endif 

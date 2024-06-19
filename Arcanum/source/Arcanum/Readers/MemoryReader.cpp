@@ -28,7 +28,7 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
-MemoryReader::MemoryReader(const std::vector<uint8_t>& buffer) :
+MemoryReader::MemoryReader(const Vector<uint8_t>& buffer) :
 	_Buffer(buffer)
 {
 }

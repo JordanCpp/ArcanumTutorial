@@ -27,17 +27,17 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Readers_MemoryReader_hpp
 #define Arcanum_Readers_MemoryReader_hpp
 
-#include <vector>
 #include <cstdint>
+#include <Arcanum/Common/Vector.hpp>
 
 namespace Arcanum
 {
 	class MemoryReader
 	{
 	public:
-		MemoryReader(const std::vector<uint8_t>& buffer);
+		MemoryReader(const Vector<uint8_t>& buffer);
 	private:
-		const std::vector<uint8_t>& _Buffer;
+		const Vector<uint8_t>& _Buffer;
 	};
 }
 

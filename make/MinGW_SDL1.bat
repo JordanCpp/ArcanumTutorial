@@ -1,6 +1,6 @@
 call "C:\Downloads\codeblocks-8.02mingw-setup\MinGW\mingwvars.bat"
 
-g++ -Wall -Wextra -pedantic -O2 -std=c++11 -static -s -o GameSDL1 ^
+g++ -Wall -Wextra -Werror -pedantic -O2 -std=c++11 -static -s -o GameSDL1 ^
 -I..\Arcanum\source ^
 -I..\dependencies\SDL-1.2.15\include ^
 -L..\dependencies\SDL-1.2.15\lib\x86 ^
