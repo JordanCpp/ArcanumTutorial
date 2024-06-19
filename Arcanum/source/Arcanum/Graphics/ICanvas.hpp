@@ -27,7 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Graphics_ICanvas_hpp
 #define Arcanum_Graphics_ICanvas_hpp
 
-#include <string>
+#include <Arcanum/Common/String.hpp>
 #include <Arcanum/Graphics/Point.hpp>
 #include <Arcanum/Events/Event.hpp>
 #include <Arcanum/Graphics/ITexture.hpp>
@@ -47,7 +47,7 @@ namespace Arcanum
 	private:
 	};
 
-	ICanvas* CanvasCreate(const Point& size, const std::string& title);
+	ICanvas* CanvasCreate(const Point& size, const String& title);
 	void CanvasDestroy(ICanvas* render);
 }
 

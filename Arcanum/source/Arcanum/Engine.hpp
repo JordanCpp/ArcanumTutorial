@@ -29,6 +29,7 @@ DEALINGS IN THE SOFTWARE.
 
 #include <Arcanum/Graphics/ICanvas.hpp>
 #include <Arcanum/Game/Settings.hpp>
+#include <Arcanum/Managers/FileManager.hpp>
 
 namespace Arcanum
 {
@@ -39,8 +40,10 @@ namespace Arcanum
 		~Engine();
 		void Run();
 	private:
-		Settings* _Settings;
-		ICanvas*  _Canvas;
+		Settings*   _Settings;
+		ICanvas*    _Canvas;
+		FileLoader  _FileLoader;
+		FileManager _FileManager;
 	};
 }
 

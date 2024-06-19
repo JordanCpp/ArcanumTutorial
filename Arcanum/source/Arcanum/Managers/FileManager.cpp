@@ -33,7 +33,7 @@ FileManager::FileManager(FileLoader& fileLoader) :
 {
 }
 
-const std::vector<uint8_t>* FileManager::File(const std::string& path)
+const std::vector<uint8_t>& FileManager::File(const String& path)
 {
 	_FileLoader.Reset(path);
 

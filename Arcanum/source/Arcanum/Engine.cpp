@@ -29,9 +29,13 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
+const size_t fileLoaderMax = 1024 * 1024;
+
 Engine::Engine(Settings* settings) :
 	_Settings(settings),
-	_Canvas(CanvasCreate(settings->WindowSize(), settings->Title()))
+	_Canvas(CanvasCreate(settings->WindowSize(), settings->Title())),
+	_FileLoader(fileLoaderMax),
+	_FileManager(_FileLoader)
 {
 }
 

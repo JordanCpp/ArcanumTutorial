@@ -24,21 +24,14 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Managers_FileManager_hpp
-#define Arcanum_Managers_FileManager_hpp
+#ifndef Arcanum_Common_String_hpp
+#define Arcanum_Common_String_hpp
 
-#include <Arcanum/Loaders/FileLoader.hpp>
+#include <string>
 
-namespace Arcanum
+namespace Arcanum 
 {
-	class FileManager
-	{
-	public:
-		FileManager(FileLoader& fileLoader);
-		const std::vector<uint8_t>& File(const String& path);
-	private:
-		FileLoader& _FileLoader;
-	};
+	using String = std::string;
 }
 
 #endif 

@@ -27,7 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Game_Settings_hpp
 #define Arcanum_Game_Settings_hpp
 
-#include <string>
+#include <Arcanum/Common/String.hpp>
 #include <Arcanum/Graphics/Point.hpp>
 
 namespace Arcanum
@@ -35,12 +35,12 @@ namespace Arcanum
 	class Settings
 	{
 	public:
-		const std::string& Title();
-		void Title(const std::string& title);
+		const String& Title();
+		void Title(const String& title);
 		const Point& WindowSize();
 		void WindowSize(const Point& size);
 	private:
-		std::string _Title;
+		String _Title;
 		Point       _WindowSize;
 	};
 }

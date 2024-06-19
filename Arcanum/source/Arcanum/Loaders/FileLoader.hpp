@@ -28,7 +28,7 @@ DEALINGS IN THE SOFTWARE.
 #define Arcanum_Loaders_FileLoader_hpp
 
 #include <vector>
-#include <string>
+#include <Arcanum/Common/String.hpp>
 #include <cstdint>
 
 namespace Arcanum
@@ -37,8 +37,8 @@ namespace Arcanum
 	{
 	public:
 		FileLoader(size_t bufferMax);
-		void Reset(const std::string& path);
-		const std::vector<uint8_t>* Content();
+		void Reset(const String& path);
+		const std::vector<uint8_t>& Content();
 	private:
 		std::vector<uint8_t> _Buffer;
 	};

@@ -31,7 +31,7 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
-ICanvas* Arcanum::CanvasCreate(const Point& size, const std::string& title)
+ICanvas* Arcanum::CanvasCreate(const Point& size, const String& title)
 {
 	return new Canvas(size, title);
 }
@@ -41,7 +41,7 @@ void Arcanum::CanvasDestroy(ICanvas* canvas)
 	delete canvas;
 }
 
-Canvas::Canvas(const Point& size, const std::string& title) :
+Canvas::Canvas(const Point& size, const String& title) :
 	_Running(true),
 	_Window(nullptr),
 	_Render(nullptr)

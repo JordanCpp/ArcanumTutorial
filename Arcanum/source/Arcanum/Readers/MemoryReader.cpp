@@ -28,7 +28,7 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
-void MemoryReader::Reset(const std::vector<uint8_t>* buffer)
+MemoryReader::MemoryReader(const std::vector<uint8_t>& buffer) :
+	_Buffer(buffer)
 {
-	_Buffer = buffer;
 }

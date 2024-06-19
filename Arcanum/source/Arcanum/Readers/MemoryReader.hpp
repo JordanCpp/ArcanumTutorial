@@ -35,9 +35,9 @@ namespace Arcanum
 	class MemoryReader
 	{
 	public:
-		void Reset(const std::vector<uint8_t>* buffer);
+		MemoryReader(const std::vector<uint8_t>& buffer);
 	private:
-		const std::vector<uint8_t>* _Buffer;
+		const std::vector<uint8_t>& _Buffer;
 	};
 }
 

@@ -28,6 +28,7 @@ DEALINGS IN THE SOFTWARE.
 #define Arcanum_Canvas_hpp
 
 #include <SDL.h>
+#include <Arcanum/Common/String.hpp>
 #include <Arcanum/Graphics/ICanvas.hpp>
 
 namespace Arcanum
@@ -35,7 +36,7 @@ namespace Arcanum
 	class Canvas : public ICanvas
 	{
 	public:
-		Canvas(const Point& size, const std::string& title);
+		Canvas(const Point& size, const String& title);
 		~Canvas();
 		void Draw(ITexture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
 		void Draw(ITexture* texture, const Point& dstPos);

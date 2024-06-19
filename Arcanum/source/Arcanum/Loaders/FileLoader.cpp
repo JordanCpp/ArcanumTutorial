@@ -36,7 +36,7 @@ FileLoader::FileLoader(size_t bufferMax)
 	_Buffer.reserve(bufferMax);
 }
 
-void FileLoader::Reset(const std::string& path)
+void FileLoader::Reset(const String& path)
 {
 	std::ifstream file(path, std::ios::in | std::ios::binary);
 
@@ -45,20 +45,18 @@ void FileLoader::Reset(const std::string& path)
 		throw std::runtime_error("Can't load file: " + path);
 	}
 
-	std::streampos fileSize;
-
 	file.seekg(0, std::ios::end);
-	fileSize = file.tellg();
+	size_t fileSize = (size_t)file.tellg();
 	file.seekg(0, std::ios::beg);
 
 	assert(fileSize <= _Buffer.capacity());
 
-	_Buffer.resize((size_t)fileSize);
+	_Buffer.resize(fileSize);
 
-	file.read((char*)_Buffer.data(), (size_t)fileSize);
+	file.read((char*)_Buffer.data(), fileSize);
 }
 
-const std::vector<uint8_t>* FileLoader::Content()
+const std::vector<uint8_t>& FileLoader::Content()
 {
-	return &_Buffer;
+	return _Buffer;
 }
