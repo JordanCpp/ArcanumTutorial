@@ -30,6 +30,7 @@ DEALINGS IN THE SOFTWARE.
 #include <cstdint>
 #include <Arcanum/Graphics/Point.hpp>
 #include <Arcanum/Graphics/ICanvas.hpp>
+#include <Arcanum/Graphics/Color.hpp>
 
 namespace Arcanum
 {
@@ -44,6 +45,7 @@ namespace Arcanum
 	};
 
 	ITexture* TextureCreate(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels);
+	ITexture* TextureCreate(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels, const Color& key);
 	void TextureDestroy(ITexture* texture);
 }
 

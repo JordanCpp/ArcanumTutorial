@@ -32,10 +32,12 @@ using namespace Arcanum;
 const size_t fileLoaderMax = 1024 * 1024;
 
 Engine::Engine(Settings& settings) :
+	_ColorKey(Color(0, 0, 255)),
 	_Settings(settings),
 	_Canvas(CanvasCreate(settings.WindowSize(), settings.Title())),
 	_FileLoader(fileLoaderMax),
-	_FileManager(_FileLoader)
+	_FileManager(_FileLoader),
+	_TextureManager(_Canvas, _ColorKey, _FileManager, _ImageLoader)
 {
 }
 
@@ -54,5 +56,8 @@ void Engine::Run()
 		{
 			_Canvas->StopEvent();
 		}
+
+		ITexture* texture = _TextureManager.GetTexture("data/art/tile/grsbse0c_0_0_0.bmp");
+		_Canvas->Draw(texture, Point(0, 0));
 	}
 }

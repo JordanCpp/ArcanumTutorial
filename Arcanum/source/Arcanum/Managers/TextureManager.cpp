@@ -1,4 +1,3 @@
-#include "ImageLoader.hpp"
 /*
 Boost Software License - Version 1.0 - August 17th, 2003
 
@@ -25,42 +24,43 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include <Arcanum/Loaders/ImageLoader.hpp>
-#include <stdexcept>
-
-#define STB_IMAGE_IMPLEMENTATION
-#define STBI_NO_THREAD_LOCALS
-#define STBI_NO_SIMD
-#include "../../dependencies/stb/stb_image.h"
+#include <Arcanum/Managers/TextureManager.hpp>
+#include <Arcanum/Readers/MemoryReader.hpp>
 
 using namespace Arcanum;
 
-void ImageLoader::Load(const Vector<uint8_t>& data)
+TextureManager::TextureManager(ICanvas* canvas, const Color& colorKey, FileManager& fileManager, ImageLoader& imageLoader) :
+	_ColorKey(colorKey),
+	_Canvas(canvas),
+	_FileManager(fileManager),
+	_ImageLoader(imageLoader)
 {
-	if (_Pixels != nullptr)
+}
+
+TextureManager::~TextureManager()
+{
+	for (auto&& i : _Textures)
 	{
-		stbi_image_free(_Pixels);
+		TextureDestroy(i.second);
+	}
+}
+
+ITexture* TextureManager::GetTexture(const String& path)
+{
+	auto i = _Textures.find(path);
+
+	ITexture* result = nullptr;
+
+	if (i == _Textures.end())
+	{
+		_ImageLoader.Load(_FileManager.File(path));
+
+		result = TextureCreate(_Canvas, _ImageLoader.Size(), _ImageLoader.Bpp(), _ImageLoader.Pixels(), _ColorKey);
+
+		_Textures.emplace(path, result);
+
+		return result;
 	}
 
-	_Pixels = stbi_load_from_memory(data.data(), data.size(), &_Size.x, &_Size.y, &_Bpp, STBI_default);
-
-	if (!_Pixels)
-	{
-		throw std::runtime_error("Can't load file");
-	}
-}
-
-int ImageLoader::Bpp()
-{
-	return _Bpp;
-}
-
-uint8_t* ImageLoader::Pixels()
-{
-	return _Pixels;
-}
-
-const Point& ImageLoader::Size()
-{
-	return _Size;
+	return i->second;
 }

@@ -29,14 +29,14 @@ DEALINGS IN THE SOFTWARE.
 
 #include <Arcanum/Graphics/Point.hpp>
 #include <Arcanum/Readers/MemoryReader.hpp>
-#include <Arcanum/Common/String.hpp>
+#include <Arcanum/Common/Vector.hpp>
 
 namespace Arcanum
 {
 	class ImageLoader
 	{
 	public:
-		void Load(const String& path);
+		void Load(const Vector<uint8_t>& data);
 		int Bpp();
 		uint8_t* Pixels();
 		const Point& Size();

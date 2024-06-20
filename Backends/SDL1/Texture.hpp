@@ -37,6 +37,8 @@ namespace Arcanum
 	{
 	public:
 		Texture(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels);
+		Texture(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels, const Color& key);
+		~Texture();
 		SDL_Surface* GetTextureImpl();
 		const Point& Size();
 	private:

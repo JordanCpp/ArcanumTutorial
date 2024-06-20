@@ -1,4 +1,3 @@
-#include "ImageLoader.hpp"
 /*
 Boost Software License - Version 1.0 - August 17th, 2003
 
@@ -25,42 +24,31 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
+#ifndef Arcanum_Managers_TextureManager_hpp
+#define Arcanum_Managers_TextureManager_hpp
+
+#include <Arcanum/Common/UnorderedMap.hpp>
+#include <Arcanum/Graphics/ITexture.hpp>
+#include <Arcanum/Managers/FileManager.hpp>
 #include <Arcanum/Loaders/ImageLoader.hpp>
-#include <stdexcept>
 
-#define STB_IMAGE_IMPLEMENTATION
-#define STBI_NO_THREAD_LOCALS
-#define STBI_NO_SIMD
-#include "../../dependencies/stb/stb_image.h"
-
-using namespace Arcanum;
-
-void ImageLoader::Load(const Vector<uint8_t>& data)
+namespace Arcanum
 {
-	if (_Pixels != nullptr)
+	class TextureManager
 	{
-		stbi_image_free(_Pixels);
-	}
+	public:
+		TextureManager(ICanvas* canvas, const Color& colorKey, FileManager& fileManager, ImageLoader& imageLoader);
+		~TextureManager();
+		ITexture* GetTexture(const String& path);
+	private:
+		typedef UnorderedMap<String, ITexture*> container;
 
-	_Pixels = stbi_load_from_memory(data.data(), data.size(), &_Size.x, &_Size.y, &_Bpp, STBI_default);
-
-	if (!_Pixels)
-	{
-		throw std::runtime_error("Can't load file");
-	}
+		Color        _ColorKey;
+		ICanvas*     _Canvas;
+		FileManager& _FileManager;
+		ImageLoader& _ImageLoader;
+		container    _Textures;
+	};
 }
 
-int ImageLoader::Bpp()
-{
-	return _Bpp;
-}
-
-uint8_t* ImageLoader::Pixels()
-{
-	return _Pixels;
-}
-
-const Point& ImageLoader::Size()
-{
-	return _Size;
-}
+#endif 

@@ -31,6 +31,7 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/Graphics/Point.hpp>
 #include <Arcanum/Events/Event.hpp>
 #include <Arcanum/Graphics/ITexture.hpp>
+#include <Arcanum/Graphics/Color.hpp>
 
 namespace Arcanum
 {

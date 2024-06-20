@@ -45,14 +45,14 @@ Canvas::Canvas(const Point& size, const String& title) :
 	_Running(true),
 	_Screen(nullptr)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
 		throw std::runtime_error(SDL_GetError());
 	}
 
 	_Screen = SDL_SetVideoMode(size.x, size.y, 32, SDL_SWSURFACE);
 
-	if (_Screen == NULL)
+	if (!_Screen)
 	{
 		throw std::runtime_error(SDL_GetError());
 	}
@@ -62,6 +62,7 @@ Canvas::Canvas(const Point& size, const String& title) :
 
 Canvas::~Canvas()
 {
+	SDL_FreeSurface(_Screen);
 	SDL_Quit();
 }
 
@@ -107,6 +108,11 @@ bool Canvas::GetEvent(Event& dstEvent)
 			dstEvent.Type = IsEventMove;
 			dstEvent.Move.PosX = event.motion.x;
 			dstEvent.Move.PosY = event.motion.y;
+		}
+
+		if (SDL_Flip(_Screen) != 0)
+		{
+			throw std::runtime_error(SDL_GetError());
 		}
 	}
 
