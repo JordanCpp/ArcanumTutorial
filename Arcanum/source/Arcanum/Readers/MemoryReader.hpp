@@ -27,6 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Readers_MemoryReader_hpp
 #define Arcanum_Readers_MemoryReader_hpp
 
+#include <cstddef>
 #include <cstdint>
 #include <Arcanum/Common/Vector.hpp>
 

@@ -24,6 +24,42 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include <Arcanum/Formats/Art.hpp>
+#include <Arcanum/Loaders/ImageLoader.hpp>
+#include <stdexcept>
+
+#define STB_IMAGE_IMPLEMENTATION
+#define STBI_NO_THREAD_LOCALS
+#define STBI_NO_SIMD
+#include "../../dependencies/stb/stb_image.h"
 
 using namespace Arcanum;
+
+void ImageLoader::Load(const String& path)
+{
+	if (_Pixels != nullptr)
+	{
+		stbi_image_free(_Pixels);
+	}
+
+	_Pixels = stbi_load(path.c_str(), &_Size.x, &_Size.y, &_Bpp, STBI_default);
+
+	if (!_Pixels)
+	{
+		throw std::runtime_error("Can't load file: " + path);
+	}
+}
+
+int ImageLoader::Bpp()
+{
+	return _Bpp;
+}
+
+uint8_t* ImageLoader::Pixels()
+{
+	return _Pixels;
+}
+
+const Point& ImageLoader::Size()
+{
+	return _Size;
+}
