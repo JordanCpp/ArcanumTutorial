@@ -24,30 +24,40 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Canvas_hpp
-#define Arcanum_Canvas_hpp
-
 #include <SDL.h>
-#include <Arcanum/Common/String.hpp>
-#include <Arcanum/Graphics/Canvas.hpp>
-#include <Arcanum/Graphics/Point.hpp>
-#include <Arcanum/Events/Event.hpp>
+#include <Arcanum/Events/EventHandler.hpp>
 
-namespace Arcanum
+using namespace Arcanum;
+
+EventHandler::EventHandler() :
+	_Running(true)
 {
-	class Texture;
-
-	class Canvas
-	{
-	public:
-		Canvas(const Point& size, const String& title);
-		~Canvas();
-		void Present();
-		void Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
-		void Draw(Texture* texture, const Point& dstPos);
-	private:
-		SDL_Surface* _Screen;
-	};
 }
 
-#endif 
+bool EventHandler::GetEvent(Event& dstEvent)
+{
+	SDL_Event event = { 0 };
+
+	if (_Running)
+	{
+		SDL_PollEvent(&event);
+
+		if (event.type == SDL_QUIT)
+		{
+			dstEvent.Type = IsEventQuit;
+		}
+		else if (event.type == SDL_MOUSEMOTION)
+		{
+			dstEvent.Type = IsEventMove;
+			dstEvent.Move.PosX = event.motion.x;
+			dstEvent.Move.PosY = event.motion.y;
+		}
+	}
+
+	return _Running;
+}
+
+void EventHandler::StopEvent()
+{
+	_Running = false;
+}

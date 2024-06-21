@@ -31,6 +31,7 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/Game/Settings.hpp>
 #include <Arcanum/Managers/TextureManager.hpp>
 #include <Arcanum/Graphics/Canvas.hpp>
+#include <Arcanum/Events/EventHandler.hpp>
 
 namespace Arcanum
 {
@@ -44,6 +45,7 @@ namespace Arcanum
 		Color          _ColorKey;
 		Settings&      _Settings;
 		Canvas         _Canvas;
+		EventHandler   _EventHandler;
 		FileLoader     _FileLoader;
 		FileManager    _FileManager;
 		ImageLoader    _ImageLoader;

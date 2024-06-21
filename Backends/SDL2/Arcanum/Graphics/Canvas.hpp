@@ -45,11 +45,8 @@ namespace Arcanum
 		void Present();
 		void Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
 		void Draw(Texture* texture, const Point& dstPos);
-		bool GetEvent(Event& dstEvent);
-		void StopEvent();
 		SDL_Renderer* GetRenderImpl();
 	private:
-		bool          _Running;
 		SDL_Window*   _Window;
 		SDL_Renderer* _Render;
 	};

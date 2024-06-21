@@ -49,11 +49,11 @@ void Engine::Run()
 {
 	Event report;
 
-	while (_Canvas.GetEvent(report))
+	while (_EventHandler.GetEvent(report))
 	{
 		if (report.Type == IsEventQuit)
 		{
-			_Canvas.StopEvent();
+			_EventHandler.StopEvent();
 		}
 
 		Texture* texture = _TextureManager.GetTexture("data/art/tile/grsbse0c_0_0_0.bmp");

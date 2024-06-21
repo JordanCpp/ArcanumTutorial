@@ -32,7 +32,6 @@ DEALINGS IN THE SOFTWARE.
 using namespace Arcanum;
 
 Canvas::Canvas(const Point& size, const String& title) :
-	_Running(true),
 	_Screen(nullptr)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
@@ -87,32 +86,4 @@ void Canvas::Draw(Texture* texture, const Point& dstPos, const Point& dstSize, c
 void Canvas::Draw(Texture* texture, const Point& dstPos)
 {
 	Draw(texture, dstPos, texture->Size(), Point(0, 0), texture->Size());
-}
-
-bool Canvas::GetEvent(Event& dstEvent)
-{
-	SDL_Event event = { 0 };
-
-	if (_Running)
-	{
-		SDL_PollEvent(&event);
-
-		if (event.type == SDL_QUIT)
-		{
-			dstEvent.Type = IsEventQuit;
-		}
-		else if (event.type == SDL_MOUSEMOTION)
-		{
-			dstEvent.Type = IsEventMove;
-			dstEvent.Move.PosX = event.motion.x;
-			dstEvent.Move.PosY = event.motion.y;
-		}
-	}
-
-	return _Running;
-}
-
-void Canvas::StopEvent()
-{
-	_Running = false;
 }

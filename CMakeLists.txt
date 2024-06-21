@@ -19,7 +19,7 @@ endif()
 include_directories(${SDL2_INCLUDE_DIRS})
 
 include_directories("Backends/SDL2")
-file(GLOB_RECURSE BACKEND_SOURCES  "Backends/SDL2/Arcanum/Graphics/*.cpp")
+file(GLOB_RECURSE BACKEND_SOURCES  "Backends/SDL2/Arcanum/*.cpp")
 add_library(Backend ${BACKEND_SOURCES})
 target_link_libraries(Backend ${SDL2_LIBRARIES})
 

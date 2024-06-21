@@ -24,29 +24,21 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Canvas_hpp
-#define Arcanum_Canvas_hpp
+#ifndef Arcanum_EventHandler_hpp
+#define Arcanum_EventHandler_hpp
 
-#include <SDL.h>
-#include <Arcanum/Common/String.hpp>
-#include <Arcanum/Graphics/Canvas.hpp>
-#include <Arcanum/Graphics/Point.hpp>
 #include <Arcanum/Events/Event.hpp>
 
 namespace Arcanum
 {
-	class Texture;
-
-	class Canvas
+	class EventHandler
 	{
 	public:
-		Canvas(const Point& size, const String& title);
-		~Canvas();
-		void Present();
-		void Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
-		void Draw(Texture* texture, const Point& dstPos);
+		EventHandler();
+		bool GetEvent(Event& dstEvent);
+		void StopEvent();
 	private:
-		SDL_Surface* _Screen;
+		bool _Running;
 	};
 }
 

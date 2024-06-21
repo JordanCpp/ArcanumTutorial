@@ -6,6 +6,7 @@ g++ -Wall -Wextra -pedantic -O2 -std=c++11 -static -s -o GameSDL2 ^
 -I..\dependencies\SDL2-2.30.3\include ^
 -L..\dependencies\SDL2-2.30.3\lib\x86 ^
 ..\Backends\SDL2\Arcanum\Graphics\*.cpp ^
+..\Backends\SDL2\Arcanum\Events\*.cpp ^
 ..\main.cpp ^
 ..\Arcanum\source\Arcanum\*.cpp ^
 ..\Arcanum\source\Arcanum\Game\*.cpp ^
