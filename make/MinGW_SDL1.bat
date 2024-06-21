@@ -15,6 +15,6 @@ g++ -Wall -Wextra -pedantic -O2 -std=c++11 -static -s -o GameSDL1 ^
 ..\Arcanum\source\Arcanum\Readers\*.cpp ^
 ..\Arcanum\source\Arcanum\Managers\*.cpp ^
 ..\Arcanum\source\Arcanum\Objects\*.cpp ^
--lSDLmain -lSDL
+-lmingw32 -lSDLmain -lSDL
 
 pause
