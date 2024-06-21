@@ -30,7 +30,6 @@ DEALINGS IN THE SOFTWARE.
 #include <SDL.h>
 #include <Arcanum/Graphics/Texture.hpp>
 #include <Arcanum/Graphics/Canvas.hpp>
-#include <Arcanum/Graphics/Point.hpp>
 #include <Arcanum/Graphics/Color.hpp>
 
 namespace Arcanum

@@ -58,5 +58,7 @@ void Engine::Run()
 
 		Texture* texture = _TextureManager.GetTexture("data/art/tile/grsbse0c_0_0_0.bmp");
 		_Canvas.Draw(texture, Point(0, 0));
+
+		_Canvas.Present();
 	}
 }

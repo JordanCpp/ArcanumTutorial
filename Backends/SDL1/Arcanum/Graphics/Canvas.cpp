@@ -56,6 +56,14 @@ Canvas::~Canvas()
 	SDL_Quit();
 }
 
+void Canvas::Present()
+{
+	if (SDL_Flip(_Screen) != 0)
+	{
+		throw std::runtime_error(SDL_GetError());
+	}
+}
+
 void Canvas::Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize)
 {
 	assert(texture != nullptr);
@@ -98,11 +106,6 @@ bool Canvas::GetEvent(Event& dstEvent)
 			dstEvent.Type = IsEventMove;
 			dstEvent.Move.PosX = event.motion.x;
 			dstEvent.Move.PosY = event.motion.y;
-		}
-
-		if (SDL_Flip(_Screen) != 0)
-		{
-			throw std::runtime_error(SDL_GetError());
 		}
 	}
 

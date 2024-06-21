@@ -57,6 +57,11 @@ Canvas::~Canvas()
 	SDL_Quit();
 }
 
+void Canvas::Present()
+{
+	SDL_RenderPresent(_Render);
+}
+
 void Canvas::Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize)
 {
 	assert(texture != nullptr);
@@ -100,8 +105,6 @@ bool Canvas::GetEvent(Event& dstEvent)
 			dstEvent.Move.PosX = event.motion.x;
 			dstEvent.Move.PosY = event.motion.y;
 		}
-
-		SDL_RenderPresent(_Render);
 	}
 
 	return _Running;

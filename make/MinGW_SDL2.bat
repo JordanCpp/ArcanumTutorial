@@ -1,4 +1,4 @@
-call "C:\Downloads\codeblocks-8.02mingw-setup\MinGW\mingwvars.bat"
+call "C:\Downloads\codeblocks-12.11mingw-setup\MinGW\mingwvars.bat"
 
 g++ -Wall -Wextra -pedantic -O2 -std=c++11 -static -s -o GameSDL2 ^
 -I..\Arcanum\source ^
