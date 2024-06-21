@@ -42,7 +42,7 @@ void ImageLoader::Load(const Vector<uint8_t>& data)
 		stbi_image_free(_Pixels);
 	}
 
-	_Pixels = stbi_load_from_memory(data.data(), data.size(), &_Size.x, &_Size.y, &_Bpp, STBI_default);
+	_Pixels = stbi_load_from_memory(data.data(), (int)data.size(), &_Size.x, &_Size.y, &_Bpp, STBI_default);
 
 	if (!_Pixels)
 	{
