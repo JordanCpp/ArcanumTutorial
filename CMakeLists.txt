@@ -20,12 +20,9 @@ include_directories(${SDL2_INCLUDE_DIRS})
 
 include_directories("Backends/SDL2")
 file(GLOB_RECURSE BACKEND_SOURCES  "Backends/SDL2/Arcanum/*.cpp")
-add_library(Backend ${BACKEND_SOURCES})
-target_link_libraries(Backend ${SDL2_LIBRARIES})
 
 include_directories("Arcanum/source")
 file(GLOB_RECURSE ARCANUM_SOURCES  "Arcanum/*.cpp")
-add_library(Arcanum ${ARCANUM_SOURCES})
 
-add_executable(Game "main.cpp")
-target_link_libraries(Game Backend Arcanum)
+add_executable(Game "main.cpp" ${BACKEND_SOURCES} ${ARCANUM_SOURCES})
+target_link_libraries(Game ${SDL2_LIBRARIES})
