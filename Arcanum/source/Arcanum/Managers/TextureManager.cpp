@@ -29,7 +29,7 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
-TextureManager::TextureManager(ICanvas* canvas, const Color& colorKey, FileManager& fileManager, ImageLoader& imageLoader) :
+TextureManager::TextureManager(Canvas* canvas, const Color& colorKey, FileManager& fileManager, ImageLoader& imageLoader) :
 	_ColorKey(colorKey),
 	_Canvas(canvas),
 	_FileManager(fileManager),
@@ -41,21 +41,21 @@ TextureManager::~TextureManager()
 {
 	for (auto&& i : _Textures)
 	{
-		TextureDestroy(i.second);
+		delete i.second;
 	}
 }
 
-ITexture* TextureManager::GetTexture(const String& path)
+Texture* TextureManager::GetTexture(const String& path)
 {
 	auto i = _Textures.find(path);
 
-	ITexture* result = nullptr;
+	Texture* result = nullptr;
 
 	if (i == _Textures.end())
 	{
 		_ImageLoader.Load(_FileManager.File(path));
 
-		result = TextureCreate(_Canvas, _ImageLoader.Size(), _ImageLoader.Bpp(), _ImageLoader.Pixels(), _ColorKey);
+		result = new Texture(_Canvas, _ImageLoader.Size(), _ImageLoader.Bpp(), _ImageLoader.Pixels(), _ColorKey);
 
 		_Textures.emplace(path, result);
 

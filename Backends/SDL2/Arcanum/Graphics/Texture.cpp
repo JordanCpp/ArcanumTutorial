@@ -24,9 +24,7 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include "Texture.hpp"
-#include "Canvas.hpp"
-
+#include <Arcanum/Graphics/Texture.hpp>
 #include <stdexcept>
 #include <cassert>
 
@@ -46,24 +44,7 @@ const uint32_t A_MASK = 0xff000000;
 
 const uint8_t bitSize = 8;
 
-ITexture* Arcanum::TextureCreate(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels)
-{
-	return new Texture(canvas, size, bpp, pixels);
-}
-
-ITexture* Arcanum::TextureCreate(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels, const Color& key)
-{
-    return new Texture(canvas, size, bpp, pixels, key);
-}
-
-void Arcanum::TextureDestroy(ITexture* texture)
-{
-    assert(texture != nullptr);
-
-    delete texture;
-}
-
-Texture::Texture(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels) :
+Texture::Texture(Canvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels) :
     _Texture(nullptr),
     _Size(size)
 {
@@ -71,43 +52,61 @@ Texture::Texture(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixel
     assert(size.x > 0);
     assert(size.y > 0);
     assert(pixels != nullptr);
+
+	SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(pixels, size.x, size.y, bitSize * bpp, size.x * bpp, R_MASK, G_MASK, B_MASK, A_MASK);
+
+    if (!surface)
+        throw std::runtime_error(SDL_GetError());
+
+    Canvas* impl = (Canvas*)canvas;
     
-   _Texture = SDL_CreateRGBSurfaceFrom(pixels, size.x, size.y, bitSize * bpp, size.x * bpp, R_MASK, G_MASK, B_MASK, 0);
-
-   if (!_Texture)
-       throw std::runtime_error(SDL_GetError());
-}
-
-Texture::Texture(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels, const Color& key) :
-    _Texture(nullptr),
-    _Size(size)
-{
-    assert(canvas != nullptr);
-    assert(size.x > 0);
-    assert(size.y > 0);
-    assert(pixels != nullptr);
-
-    _Texture = SDL_CreateRGBSurfaceFrom(pixels, size.x, size.y, bitSize * bpp, size.x * bpp, R_MASK, G_MASK, B_MASK, 0);
+    _Texture = SDL_CreateTextureFromSurface(impl->GetRenderImpl(), surface);
 
     if (!_Texture)
+        throw std::runtime_error(SDL_GetError());
+
+    SDL_FreeSurface(surface);
+}
+
+Texture::Texture(Canvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels, const Color& key) :
+    _Texture(nullptr),
+    _Size(size)
+{
+    assert(canvas != nullptr);
+    assert(size.x > 0);
+    assert(size.y > 0);
+    assert(pixels != nullptr);
+
+    SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(pixels, size.x, size.y, bitSize * bpp, size.x * bpp, R_MASK, G_MASK, B_MASK, A_MASK);
+    
+    if (!surface)
     {
         throw std::runtime_error(SDL_GetError());
     }
 
-    int colorKey = SDL_SetColorKey(_Texture, SDL_SRCCOLORKEY, SDL_MapRGB(_Texture->format, key.r, key.g, key.b));
+    int colorKey = SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, key.r, key.g, key.b));
 
     if (colorKey != 0)
     {
         throw std::runtime_error(SDL_GetError());
     }
+
+    Canvas* impl = (Canvas*)canvas;
+
+    _Texture = SDL_CreateTextureFromSurface(impl->GetRenderImpl(), surface);
+
+    if (!_Texture)
+        throw std::runtime_error(SDL_GetError());
+
+    SDL_FreeSurface(surface);
 }
 
 Texture::~Texture()
 {
-    SDL_FreeSurface(_Texture);
+    SDL_DestroyTexture(_Texture);
 }
 
-SDL_Surface* Texture::GetTextureImpl()
+SDL_Texture* Texture::GetTextureImpl()
 {
     return _Texture;
 }

@@ -28,16 +28,19 @@ DEALINGS IN THE SOFTWARE.
 #define Arcanum_Texture_hpp
 
 #include <SDL.h>
-#include <Arcanum/Graphics/ITexture.hpp>
-#include <Arcanum/Graphics/ICanvas.hpp>
+#include <Arcanum/Graphics/Texture.hpp>
+#include <Arcanum/Graphics/Canvas.hpp>
+#include <Arcanum/Graphics/Color.hpp>
 
 namespace Arcanum
 {
-	class Texture : public ITexture
+	class Canvas;
+
+	class Texture
 	{
 	public:
-		Texture(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels);
-		Texture(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels, const Color& key);
+		Texture(Canvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels);
+		Texture(Canvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels, const Color& key);
 		~Texture();
 		SDL_Texture* GetTextureImpl();
 		const Point& Size();

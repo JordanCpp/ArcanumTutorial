@@ -24,22 +24,12 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include "Canvas.hpp"
-#include "Texture.hpp"
+#include <Arcanum/Graphics/Canvas.hpp>
+#include <Arcanum/Graphics/Texture.hpp>
 #include <stdexcept>
 #include <cassert>
 
 using namespace Arcanum;
-
-ICanvas* Arcanum::CanvasCreate(const Point& size, const String& title)
-{
-	return new Canvas(size, title);
-}
-
-void Arcanum::CanvasDestroy(ICanvas* canvas)
-{
-	delete canvas;
-}
 
 Canvas::Canvas(const Point& size, const String& title) :
 	_Running(true),
@@ -67,7 +57,7 @@ Canvas::~Canvas()
 	SDL_Quit();
 }
 
-void Canvas::Draw(ITexture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize)
+void Canvas::Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize)
 {
 	assert(texture != nullptr);
 	assert(dstPos.x >= 0);
@@ -87,7 +77,7 @@ void Canvas::Draw(ITexture* texture, const Point& dstPos, const Point& dstSize, 
 	SDL_RenderCopy(_Render, impl->GetTextureImpl(), &srcRect, &dstRect);
 }
 
-void Canvas::Draw(ITexture* texture, const Point& dstPos)
+void Canvas::Draw(Texture* texture, const Point& dstPos)
 {
 	Draw(texture, dstPos, texture->Size(), Point(0, 0), texture->Size());
 }

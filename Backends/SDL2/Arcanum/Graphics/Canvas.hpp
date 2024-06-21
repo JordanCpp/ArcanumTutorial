@@ -24,29 +24,34 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Graphics_ITexture_hpp
-#define Arcanum_Graphics_ITexture_hpp
+#ifndef Arcanum_Canvas_hpp
+#define Arcanum_Canvas_hpp
 
-#include <cstdint>
+#include <SDL.h>
+#include <Arcanum/Common/String.hpp>
+#include <Arcanum/Graphics/Canvas.hpp>
 #include <Arcanum/Graphics/Point.hpp>
-#include <Arcanum/Graphics/ICanvas.hpp>
-#include <Arcanum/Graphics/Color.hpp>
+#include <Arcanum/Events/Event.hpp>
 
 namespace Arcanum
 {
-	class ICanvas;
+	class Texture;
 
-	class ITexture
+	class Canvas
 	{
 	public:
-		virtual ~ITexture() {};
-		virtual const Point& Size() = 0;
+		Canvas(const Point& size, const String& title);
+		~Canvas();
+		void Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
+		void Draw(Texture* texture, const Point& dstPos);
+		bool GetEvent(Event& dstEvent);
+		void StopEvent();
+		SDL_Renderer* GetRenderImpl();
 	private:
+		bool          _Running;
+		SDL_Window*   _Window;
+		SDL_Renderer* _Render;
 	};
-
-	ITexture* TextureCreate(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels);
-	ITexture* TextureCreate(ICanvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels, const Color& key);
-	void TextureDestroy(ITexture* texture);
 }
 
 #endif 

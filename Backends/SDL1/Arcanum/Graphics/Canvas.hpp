@@ -29,17 +29,21 @@ DEALINGS IN THE SOFTWARE.
 
 #include <SDL.h>
 #include <Arcanum/Common/String.hpp>
-#include <Arcanum/Graphics/ICanvas.hpp>
+#include <Arcanum/Graphics/Texture.hpp>
+#include <Arcanum/Graphics/Point.hpp>
+#include <Arcanum/Events/Event.hpp>
 
 namespace Arcanum
 {
-	class Canvas : public ICanvas
+	class Texture;
+
+	class Canvas
 	{
 	public:
 		Canvas(const Point& size, const String& title);
 		~Canvas();
-		void Draw(ITexture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
-		void Draw(ITexture* texture, const Point& dstPos);
+		void Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
+		void Draw(Texture* texture, const Point& dstPos);
 		bool GetEvent(Event& dstEvent);
 		void StopEvent();
 	private:

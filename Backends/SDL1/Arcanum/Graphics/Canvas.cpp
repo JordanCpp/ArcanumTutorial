@@ -31,16 +31,6 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
-ICanvas* Arcanum::CanvasCreate(const Point& size, const String& title)
-{
-	return new Canvas(size, title);
-}
-
-void Arcanum::CanvasDestroy(ICanvas* canvas)
-{
-	delete canvas;
-}
-
 Canvas::Canvas(const Point& size, const String& title) :
 	_Running(true),
 	_Screen(nullptr)
@@ -66,7 +56,7 @@ Canvas::~Canvas()
 	SDL_Quit();
 }
 
-void Canvas::Draw(ITexture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize)
+void Canvas::Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize)
 {
 	assert(texture != nullptr);
 	assert(dstPos.x >= 0);
@@ -86,7 +76,7 @@ void Canvas::Draw(ITexture* texture, const Point& dstPos, const Point& dstSize, 
 	SDL_BlitSurface(impl->GetTextureImpl(), &srcRect, _Screen, &dstRect);
 }
 
-void Canvas::Draw(ITexture* texture, const Point& dstPos)
+void Canvas::Draw(Texture* texture, const Point& dstPos)
 {
 	Draw(texture, dstPos, texture->Size(), Point(0, 0), texture->Size());
 }

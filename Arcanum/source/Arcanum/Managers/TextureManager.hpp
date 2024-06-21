@@ -28,7 +28,7 @@ DEALINGS IN THE SOFTWARE.
 #define Arcanum_Managers_TextureManager_hpp
 
 #include <Arcanum/Common/UnorderedMap.hpp>
-#include <Arcanum/Graphics/ITexture.hpp>
+#include <Arcanum/Graphics/Texture.hpp>
 #include <Arcanum/Managers/FileManager.hpp>
 #include <Arcanum/Loaders/ImageLoader.hpp>
 
@@ -37,14 +37,14 @@ namespace Arcanum
 	class TextureManager
 	{
 	public:
-		TextureManager(ICanvas* canvas, const Color& colorKey, FileManager& fileManager, ImageLoader& imageLoader);
+		TextureManager(Canvas* canvas, const Color& colorKey, FileManager& fileManager, ImageLoader& imageLoader);
 		~TextureManager();
-		ITexture* GetTexture(const String& path);
+		Texture* GetTexture(const String& path);
 	private:
-		typedef UnorderedMap<String, ITexture*> container;
+		typedef UnorderedMap<String, Texture*> container;
 
 		Color        _ColorKey;
-		ICanvas*     _Canvas;
+		Canvas*     _Canvas;
 		FileManager& _FileManager;
 		ImageLoader& _ImageLoader;
 		container    _Textures;

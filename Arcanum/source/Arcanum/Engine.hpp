@@ -27,9 +27,10 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Engine_hpp
 #define Arcanum_Engine_hpp
 
-#include <Arcanum/Graphics/ICanvas.hpp>
+#include <Arcanum/Graphics/Canvas.hpp>
 #include <Arcanum/Game/Settings.hpp>
 #include <Arcanum/Managers/TextureManager.hpp>
+#include <Arcanum/Graphics/Canvas.hpp>
 
 namespace Arcanum
 {
@@ -42,7 +43,7 @@ namespace Arcanum
 	private:
 		Color          _ColorKey;
 		Settings&      _Settings;
-		ICanvas*       _Canvas;
+		Canvas         _Canvas;
 		FileLoader     _FileLoader;
 		FileManager    _FileManager;
 		ImageLoader    _ImageLoader;

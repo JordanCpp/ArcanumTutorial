@@ -34,30 +34,29 @@ const size_t fileLoaderMax = 1024 * 1024;
 Engine::Engine(Settings& settings) :
 	_ColorKey(Color(0, 0, 255)),
 	_Settings(settings),
-	_Canvas(CanvasCreate(settings.WindowSize(), settings.Title())),
+	_Canvas(settings.WindowSize(), settings.Title()),
 	_FileLoader(fileLoaderMax),
 	_FileManager(_FileLoader),
-	_TextureManager(_Canvas, _ColorKey, _FileManager, _ImageLoader)
+	_TextureManager(&_Canvas, _ColorKey, _FileManager, _ImageLoader)
 {
 }
 
 Engine::~Engine()
 {
-	CanvasDestroy(_Canvas);
 }
 
 void Engine::Run()
 {
 	Event report;
 
-	while (_Canvas->GetEvent(report))
+	while (_Canvas.GetEvent(report))
 	{
 		if (report.Type == IsEventQuit)
 		{
-			_Canvas->StopEvent();
+			_Canvas.StopEvent();
 		}
 
-		ITexture* texture = _TextureManager.GetTexture("data/art/tile/grsbse0c_0_0_0.bmp");
-		_Canvas->Draw(texture, Point(0, 0));
+		Texture* texture = _TextureManager.GetTexture("data/art/tile/grsbse0c_0_0_0.bmp");
+		_Canvas.Draw(texture, Point(0, 0));
 	}
 }
