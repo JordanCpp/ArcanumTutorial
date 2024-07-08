@@ -55,6 +55,16 @@ Canvas::~Canvas()
 	SDL_Quit();
 }
 
+void Canvas::Fill(const Point& pos, const Point& size, const Color& color) const
+{
+	SDL_Rect rect = { (Sint16)pos.x, (Sint16)pos.y, (Uint16)size.x, (Uint16)size.y };
+
+	if (SDL_FillRect(_Screen, &rect, SDL_MapRGB(_Screen->format, color.r, color.g, color.b)) != 0)
+	{
+		throw std::runtime_error(SDL_GetError());
+	}
+}
+
 void Canvas::Present()
 {
 	if (SDL_Flip(_Screen) != 0)

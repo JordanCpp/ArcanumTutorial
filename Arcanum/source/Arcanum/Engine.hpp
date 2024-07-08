@@ -32,6 +32,7 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/Managers/TextureManager.hpp>
 #include <Arcanum/Graphics/Canvas.hpp>
 #include <Arcanum/Events/EventHandler.hpp>
+#include <Arcanum/UI/MainMenu.hpp>
 
 namespace Arcanum
 {
@@ -50,6 +51,7 @@ namespace Arcanum
 		FileManager    _FileManager;
 		ImageLoader    _ImageLoader;
 		TextureManager _TextureManager;
+		MainMenu       _MainMenu;
 	};
 }
 

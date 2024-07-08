@@ -24,46 +24,60 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include "Engine.hpp"
-#include <Arcanum/Engine.hpp>
+#include <Arcanum/Widgets/Widget.hpp>
 
 using namespace Arcanum;
 
-const size_t fileLoaderMax = 1024 * 1024;
-
-Engine::Engine(Settings& settings) :
-	_ColorKey(Color(0, 0, 255)),
-	_Settings(settings),
-	_Canvas(settings.WindowSize(), settings.Title()),
-	_FileLoader(fileLoaderMax),
-	_FileManager(_FileLoader),
-	_TextureManager(&_Canvas, _ColorKey, _FileManager, _ImageLoader),
-	_MainMenu(_Canvas)
+Widget::Widget(Canvas& canvas) :
+	_Canvas(canvas),
+	_State(StateNormal)
 {
 }
 
-Engine::~Engine()
+void Widget::Draw()
 {
+    switch (State())
+    {
+    case StateNormal:
+        DrawNormal();
+        break;
+    case StateHover:
+        DrawHover();
+        break;
+    case StateActive:
+        DrawActive();
+        break;
+    default:
+        break;
+    }
 }
 
-void Engine::Run()
+const Point& Widget::Pos()
 {
-	Event report;
+	return _Pos;
+}
 
-	while (_EventHandler.GetEvent(report))
-	{
-		if (report.Type == IsEventQuit)
-		{
-			_EventHandler.StopEvent();
-		}
+const Point& Widget::Size()
+{
+	return _Size;
+}
 
-		Texture* texture = _TextureManager.GetTexture("data/art/tile/grsbse0c_0_0_0.bmp");
-		_Canvas.Draw(texture, Point(0, 0));
+void Widget::Pos(const Point& pos)
+{
+	_Pos = pos;
+}
 
-		_Canvas.Fill(Point(100, 100), Point(100, 100), Color(237, 28, 36));
+void Widget::Size(const Point& size)
+{
+	_Size = size;
+}
 
-		_MainMenu.Draw();
+const Canvas& Widget::Render()
+{
+	return _Canvas;
+}
 
-		_Canvas.Present();
-	}
+int Widget::State()
+{
+	return _State;
 }

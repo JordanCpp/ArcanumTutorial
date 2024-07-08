@@ -24,46 +24,26 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include "Engine.hpp"
-#include <Arcanum/Engine.hpp>
+#ifndef Arcanum_UI_MainMenu_hpp
+#define Arcanum_UI_MainMenu_hpp
 
-using namespace Arcanum;
+#include <Arcanum/Widgets/Form.hpp>
+#include <Arcanum/GUI/GUI_Button.hpp>
 
-const size_t fileLoaderMax = 1024 * 1024;
-
-Engine::Engine(Settings& settings) :
-	_ColorKey(Color(0, 0, 255)),
-	_Settings(settings),
-	_Canvas(settings.WindowSize(), settings.Title()),
-	_FileLoader(fileLoaderMax),
-	_FileManager(_FileLoader),
-	_TextureManager(&_Canvas, _ColorKey, _FileManager, _ImageLoader),
-	_MainMenu(_Canvas)
+namespace Arcanum
 {
-}
-
-Engine::~Engine()
-{
-}
-
-void Engine::Run()
-{
-	Event report;
-
-	while (_EventHandler.GetEvent(report))
+	class MainMenu
 	{
-		if (report.Type == IsEventQuit)
-		{
-			_EventHandler.StopEvent();
-		}
-
-		Texture* texture = _TextureManager.GetTexture("data/art/tile/grsbse0c_0_0_0.bmp");
-		_Canvas.Draw(texture, Point(0, 0));
-
-		_Canvas.Fill(Point(100, 100), Point(100, 100), Color(237, 28, 36));
-
-		_MainMenu.Draw();
-
-		_Canvas.Present();
-	}
+	public:
+		MainMenu(Canvas& canvas);
+		void Draw();
+	private:
+		Canvas&      _Canvas;
+		Form         _Form;
+		FixedLayout  _Layout;
+		GUI_Button   _NewGame;
+		GUI_Button   _Exit;
+	};
 }
+
+#endif 

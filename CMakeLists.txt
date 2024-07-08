@@ -1,5 +1,13 @@
 cmake_minimum_required(VERSION 2.9)
 
+#
+# Fix warnings
+#
+if (MSVC)
+    add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+    add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)  
+endif()
+
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 

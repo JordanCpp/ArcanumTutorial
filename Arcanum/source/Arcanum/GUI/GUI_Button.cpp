@@ -24,46 +24,24 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include "Engine.hpp"
-#include <Arcanum/Engine.hpp>
+#include <Arcanum/GUI/GUI_Button.hpp>
 
 using namespace Arcanum;
 
-const size_t fileLoaderMax = 1024 * 1024;
-
-Engine::Engine(Settings& settings) :
-	_ColorKey(Color(0, 0, 255)),
-	_Settings(settings),
-	_Canvas(settings.WindowSize(), settings.Title()),
-	_FileLoader(fileLoaderMax),
-	_FileManager(_FileLoader),
-	_TextureManager(&_Canvas, _ColorKey, _FileManager, _ImageLoader),
-	_MainMenu(_Canvas)
+GUI_Button::GUI_Button(Canvas& canvas) :
+	Button(canvas)
 {
 }
 
-Engine::~Engine()
+void GUI_Button::DrawNormal()
+{
+	Render().Fill(Pos(), Size(), Color(0, 162, 232));
+}
+
+void GUI_Button::DrawHover()
 {
 }
 
-void Engine::Run()
+void GUI_Button::DrawActive()
 {
-	Event report;
-
-	while (_EventHandler.GetEvent(report))
-	{
-		if (report.Type == IsEventQuit)
-		{
-			_EventHandler.StopEvent();
-		}
-
-		Texture* texture = _TextureManager.GetTexture("data/art/tile/grsbse0c_0_0_0.bmp");
-		_Canvas.Draw(texture, Point(0, 0));
-
-		_Canvas.Fill(Point(100, 100), Point(100, 100), Color(237, 28, 36));
-
-		_MainMenu.Draw();
-
-		_Canvas.Present();
-	}
 }

@@ -32,6 +32,7 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/Graphics/Canvas.hpp>
 #include <Arcanum/Graphics/Point.hpp>
 #include <Arcanum/Events/Event.hpp>
+#include <Arcanum/Graphics/Color.hpp>
 
 namespace Arcanum
 {
@@ -42,6 +43,7 @@ namespace Arcanum
 	public:
 		Canvas(const Point& size, const String& title);
 		~Canvas();
+		void Fill(const Point& pos, const Point& size, const Color& color) const;
 		void Present();
 		void Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
 		void Draw(Texture* texture, const Point& dstPos);

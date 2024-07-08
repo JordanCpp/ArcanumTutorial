@@ -56,6 +56,15 @@ Canvas::~Canvas()
 	SDL_Quit();
 }
 
+void Canvas::Fill(const Point& pos, const Point& size, const Color& color) const
+{
+	SDL_SetRenderDrawColor(_Render, color.r, color.g, color.b, color.a);
+
+	SDL_Rect rect = { pos.x ,pos.y, size.x, size.y };
+
+	SDL_RenderFillRect(_Render, &rect);
+}
+
 void Canvas::Present()
 {
 	SDL_RenderPresent(_Render);
