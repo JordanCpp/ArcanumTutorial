@@ -27,36 +27,15 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Widgets_Widget_hpp
 #define Arcanum_Widgets_Widget_hpp
 
-#include <Arcanum/Graphics/Point.hpp>
-#include <Arcanum/Graphics/Canvas.hpp>
+#include <Arcanum/Widgets/Drawable.hpp>
 
 namespace Arcanum
 {
-	class Widget
+	class Widget : public Drawable
 	{
 	public:
-		enum
-		{
-			StateNormal,
-			StateHover,
-			StateActive
-		};
 		Widget(Canvas& canvas);
-		void Draw();
-		virtual void DrawNormal() = 0;
-		virtual void DrawHover() = 0;
-		virtual void DrawActive() = 0;
-		const Point& Pos();
-		const Point& Size();
-		void Pos(const Point& pos);
-		void Size(const Point& size);
-		const Canvas& Render();
-		int State();
 	private:
-		Canvas& _Canvas;
-		Point   _Pos;
-		Point   _Size;
-		int     _State;
 	};
 }
 

@@ -27,18 +27,19 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Widgets_Form_hpp
 #define Arcanum_Widgets_Form_hpp
 
+#include <Arcanum/Widgets/Drawable.hpp>
 #include <Arcanum/Widgets/FixedLayout.hpp>
 
 namespace Arcanum
 {
-	class Form
+	class Form : public Drawable
 	{
 	public:
 		Form(Canvas& canvas);
-		void Draw();
+		void Show();
 		void Attach(FixedLayout* layout);
+		Widget* Contains(const Point& pt);
 	private:
-		Canvas&      _Canvas;
 		FixedLayout* _Layout;
 	};
 }

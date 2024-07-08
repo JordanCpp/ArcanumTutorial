@@ -24,22 +24,82 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Widgets_Layout_hpp
-#define Arcanum_Widgets_Layout_hpp
+#include <Arcanum/Widgets/Drawable.hpp>
 
-#include <Arcanum/Widgets/Container.hpp>
+using namespace Arcanum;
 
-namespace Arcanum
+Drawable::Drawable(Canvas& canvas) :
+	_Canvas(canvas),
+	_State(StateNormal)
 {
-	class Layout
-	{
-	public:
-		void Draw();
-		void Attach(Widget* widget);
-		Widget* Contains(const Point& pt);
-	private:
-		Container _Container;
-	};
 }
 
-#endif 
+void Drawable::Draw()
+{
+    switch (State())
+    {
+    case StateNormal:
+        DrawNormal();
+        break;
+    case StateHover:
+        DrawHover();
+        break;
+    case StateActive:
+        DrawActive();
+        break;
+    default:
+        break;
+    }
+}
+
+void Drawable::DrawNormal()
+{
+}
+
+void Drawable::DrawHover()
+{
+}
+
+void Drawable::DrawActive()
+{
+}
+
+const Point& Drawable::Pos()
+{
+	return _Area.Pos();
+}
+
+const Point& Drawable::Size()
+{
+	return _Area.Size();
+}
+
+void Drawable::Pos(const Point& pos)
+{
+    _Area.Pos(pos);
+}
+
+void Drawable::Size(const Point& size)
+{
+    _Area.Size(size);
+}
+
+const Canvas& Drawable::Render()
+{
+	return _Canvas;
+}
+
+int Drawable::State()
+{
+	return _State;
+}
+
+void Drawable::State(int state)
+{
+    _State = state;
+}
+
+const Rect& Drawable::Area()
+{
+    return _Area;
+}

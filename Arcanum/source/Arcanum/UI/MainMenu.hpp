@@ -27,19 +27,21 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_UI_MainMenu_hpp
 #define Arcanum_UI_MainMenu_hpp
 
-#include <Arcanum/Widgets/Form.hpp>
+#include <Arcanum/UI/Screen.hpp>
 #include <Arcanum/GUI/GUI_Button.hpp>
+#include <Arcanum/GUI/GUI_Form.hpp>
 
 namespace Arcanum
 {
-	class MainMenu
+	class MainMenu : public Screen
 	{
 	public:
 		MainMenu(Canvas& canvas);
-		void Draw();
+		Form* GetForm();
+		void Show();
 	private:
 		Canvas&      _Canvas;
-		Form         _Form;
+		GUI_Form     _Form;
 		FixedLayout  _Layout;
 		GUI_Button   _NewGame;
 		GUI_Button   _Exit;

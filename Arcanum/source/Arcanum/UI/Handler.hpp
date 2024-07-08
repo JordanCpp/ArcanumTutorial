@@ -24,21 +24,27 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Widgets_Layout_hpp
-#define Arcanum_Widgets_Layout_hpp
+#ifndef Arcanum_UI_Handler_hpp
+#define Arcanum_UI_Handler_hpp
 
-#include <Arcanum/Widgets/Container.hpp>
+#include <Arcanum/UI/Screen.hpp>
+#include <Arcanum/Events/Event.hpp>
+#include <Arcanum/Common/UnorderedMap.hpp>
 
 namespace Arcanum
 {
-	class Layout
+	class Handler
 	{
 	public:
-		void Draw();
-		void Attach(Widget* widget);
-		Widget* Contains(const Point& pt);
+		Handler();
+		void Add(Screen* screen, const String& name);
+		void Active(const String& name);
+		void Show();
+		void Handle(const Event& event);
 	private:
-		Container _Container;
+		typedef UnorderedMap<String, Screen*> container;
+		Screen*   _Current;
+		container _Screens;
 	};
 }
 

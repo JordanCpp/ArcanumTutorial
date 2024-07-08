@@ -32,7 +32,8 @@ DEALINGS IN THE SOFTWARE.
 using namespace Arcanum;
 
 Canvas::Canvas(const Point& size, const String& title) :
-	_Screen(nullptr)
+	_Screen(nullptr),
+	_Size(size)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
@@ -53,6 +54,11 @@ Canvas::~Canvas()
 {
 	SDL_FreeSurface(_Screen);
 	SDL_Quit();
+}
+
+const Point& Canvas::Size() const
+{
+	return _Size;
 }
 
 void Canvas::Fill(const Point& pos, const Point& size, const Color& color) const

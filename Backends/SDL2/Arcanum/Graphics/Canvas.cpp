@@ -33,12 +33,13 @@ using namespace Arcanum;
 
 Canvas::Canvas(const Point& size, const String& title) :
 	_Window(nullptr),
-	_Render(nullptr)
+	_Render(nullptr),
+	_Size(size)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 		throw std::runtime_error(SDL_GetError());
 
-	_Window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, size.x, size.y, SDL_WINDOW_SHOWN);
+	_Window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _Size.x, _Size.y, SDL_WINDOW_SHOWN);
 
 	if (!_Window)
 		throw std::runtime_error(SDL_GetError());
@@ -54,6 +55,11 @@ Canvas::~Canvas()
 	SDL_DestroyRenderer(_Render);
 	SDL_DestroyWindow(_Window);
 	SDL_Quit();
+}
+
+const Point& Canvas::Size() const
+{
+	return _Size;
 }
 
 void Canvas::Fill(const Point& pos, const Point& size, const Color& color) const

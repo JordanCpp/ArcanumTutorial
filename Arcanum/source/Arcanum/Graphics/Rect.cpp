@@ -1,3 +1,4 @@
+#include "Point.hpp"
 /*
 Boost Software License - Version 1.0 - August 17th, 2003
 
@@ -24,22 +25,49 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Widgets_Layout_hpp
-#define Arcanum_Widgets_Layout_hpp
+#include <Arcanum/Graphics/Rect.hpp>
 
-#include <Arcanum/Widgets/Container.hpp>
+using namespace Arcanum;
 
-namespace Arcanum
+Rect::Rect() :
+	_Pos(Point(0, 0)),
+	_Size(Point(0, 0))
 {
-	class Layout
-	{
-	public:
-		void Draw();
-		void Attach(Widget* widget);
-		Widget* Contains(const Point& pt);
-	private:
-		Container _Container;
-	};
 }
 
-#endif 
+Rect::Rect(int x, int y, int w, int h) :
+	_Pos(Point(x, y)),
+	_Size(Point(w, h))
+{
+}
+
+Rect::Rect(const Point& pos, const Point& size) :
+	_Pos(pos),
+	_Size(size)
+{
+}
+
+bool Rect::Contains(const Point& pt)  const
+{
+	return pt.x >= _Pos.x && pt.y >= _Pos.y && pt.x <= _Pos.x + _Size.x && pt.y <= _Pos.y + _Size.y;
+}
+
+const Point& Rect::Pos()
+{
+	return _Pos;
+}
+
+const Point& Rect::Size()
+{
+	return _Size;
+}
+
+void Rect::Pos(const Point& pos)
+{
+	_Pos = pos;
+}
+
+void Rect::Size(const Point& size)
+{
+	_Size = size;
+}

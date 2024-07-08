@@ -43,12 +43,14 @@ namespace Arcanum
 	public:
 		Canvas(const Point& size, const String& title);
 		~Canvas();
+		const Point& Size() const;
 		void Fill(const Point& pos, const Point& size, const Color& color) const;
 		void Present();
 		void Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
 		void Draw(Texture* texture, const Point& dstPos);
 	private:
 		SDL_Surface* _Screen;
+		Point        _Size;
 	};
 }
 

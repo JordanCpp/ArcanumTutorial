@@ -24,21 +24,27 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Widgets_Layout_hpp
-#define Arcanum_Widgets_Layout_hpp
+#ifndef Arcanum_Graphics_Rect_hpp
+#define Arcanum_Graphics_Rect_hpp
 
-#include <Arcanum/Widgets/Container.hpp>
+#include <Arcanum/Graphics/Point.hpp>
 
 namespace Arcanum
 {
-	class Layout
+	class Rect
 	{
 	public:
-		void Draw();
-		void Attach(Widget* widget);
-		Widget* Contains(const Point& pt);
+		Rect();
+		Rect(int x, int y, int w, int h);
+		Rect(const Point& pos, const Point& size);
+		bool Contains(const Point& pt) const;
+		const Point& Pos();
+		const Point& Size();
+		void Pos(const Point& pos);
+		void Size(const Point& size);
 	private:
-		Container _Container;
+		Point _Pos;
+		Point _Size;
 	};
 }
 

@@ -40,3 +40,18 @@ void Layout::Attach(Widget* widget)
 {
 	_Container.Add(widget);
 }
+
+Widget* Layout::Contains(const Point& pt)
+{
+	for (size_t i = 0; i < _Container.Widgets().size(); i++)
+	{
+		Widget* p = _Container.Widgets()[i];
+
+		if (p->Area().Contains(pt))
+		{
+			return p;
+		}
+	}
+
+	return nullptr;
+}

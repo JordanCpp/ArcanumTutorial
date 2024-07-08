@@ -24,21 +24,40 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Widgets_Layout_hpp
-#define Arcanum_Widgets_Layout_hpp
+#ifndef Arcanum_Widgets_Drawable_hpp
+#define Arcanum_Widgets_Drawable_hpp
 
-#include <Arcanum/Widgets/Container.hpp>
+#include <Arcanum/Graphics/Rect.hpp>
+#include <Arcanum/Graphics/Canvas.hpp>
 
 namespace Arcanum
 {
-	class Layout
+	class Drawable
 	{
 	public:
+		enum
+		{
+			StateNormal,
+			StateHover,
+			StateActive
+		};
+		Drawable(Canvas& canvas);
 		void Draw();
-		void Attach(Widget* widget);
-		Widget* Contains(const Point& pt);
+		virtual void DrawNormal() = 0;
+		virtual void DrawHover() = 0;
+		virtual void DrawActive() = 0;
+		const Point& Pos();
+		const Point& Size();
+		void Pos(const Point& pos);
+		void Size(const Point& size);
+		const Canvas& Render();
+		int State();
+		void State(int state);
+		const Rect& Area();
 	private:
-		Container _Container;
+		Canvas& _Canvas;
+		Rect    _Area;
+		int     _State;
 	};
 }
 

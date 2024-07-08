@@ -24,21 +24,19 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Widgets_Layout_hpp
-#define Arcanum_Widgets_Layout_hpp
+#ifndef Arcanum_UI_Screen_hpp
+#define Arcanum_UI_Screen_hpp
 
-#include <Arcanum/Widgets/Container.hpp>
+#include <Arcanum/Widgets/Form.hpp>
 
 namespace Arcanum
 {
-	class Layout
+	class Screen
 	{
 	public:
-		void Draw();
-		void Attach(Widget* widget);
-		Widget* Contains(const Point& pt);
+		virtual Form* GetForm() = 0;
+		virtual void Show() = 0;
 	private:
-		Container _Container;
 	};
 }
 

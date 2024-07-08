@@ -40,6 +40,7 @@ void GUI_Button::DrawNormal()
 
 void GUI_Button::DrawHover()
 {
+	Render().Fill(Pos(), Size(), Color(34, 177, 76));
 }
 
 void GUI_Button::DrawActive()

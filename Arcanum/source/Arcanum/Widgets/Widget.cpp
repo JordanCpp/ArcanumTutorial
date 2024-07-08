@@ -29,55 +29,6 @@ DEALINGS IN THE SOFTWARE.
 using namespace Arcanum;
 
 Widget::Widget(Canvas& canvas) :
-	_Canvas(canvas),
-	_State(StateNormal)
+	Drawable(canvas)
 {
-}
-
-void Widget::Draw()
-{
-    switch (State())
-    {
-    case StateNormal:
-        DrawNormal();
-        break;
-    case StateHover:
-        DrawHover();
-        break;
-    case StateActive:
-        DrawActive();
-        break;
-    default:
-        break;
-    }
-}
-
-const Point& Widget::Pos()
-{
-	return _Pos;
-}
-
-const Point& Widget::Size()
-{
-	return _Size;
-}
-
-void Widget::Pos(const Point& pos)
-{
-	_Pos = pos;
-}
-
-void Widget::Size(const Point& size)
-{
-	_Size = size;
-}
-
-const Canvas& Widget::Render()
-{
-	return _Canvas;
-}
-
-int Widget::State()
-{
-	return _State;
 }

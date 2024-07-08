@@ -29,12 +29,13 @@ DEALINGS IN THE SOFTWARE.
 using namespace Arcanum;
 
 Form::Form(Canvas& canvas) :
-	_Canvas(canvas),
+	Drawable(canvas),
 	_Layout(nullptr)
 {
+	Size(Render().Size());
 }
 
-void Form::Draw()
+void Form::Show()
 {
 	if (_Layout)
 	{
@@ -45,4 +46,9 @@ void Form::Draw()
 void Form::Attach(FixedLayout* layout)
 {
 	_Layout = layout;
+}
+
+Widget* Form::Contains(const Point& pt)
+{
+	return _Layout->Contains(pt);
 }

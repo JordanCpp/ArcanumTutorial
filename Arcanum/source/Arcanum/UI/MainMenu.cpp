@@ -49,7 +49,12 @@ MainMenu::MainMenu(Canvas& canvas) :
 	_Exit.Resize(Point(x, y), buttonSize);
 }
 
-void MainMenu::Draw()
+Form* MainMenu::GetForm()
+{
+	return &_Form;
+}
+
+void MainMenu::Show()
 {
 	_Form.Draw();
 }

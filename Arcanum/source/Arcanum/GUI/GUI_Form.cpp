@@ -24,22 +24,25 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Widgets_Layout_hpp
-#define Arcanum_Widgets_Layout_hpp
+#include <Arcanum/GUI/GUI_Form.hpp>
 
-#include <Arcanum/Widgets/Container.hpp>
+using namespace Arcanum;
 
-namespace Arcanum
+GUI_Form::GUI_Form(Canvas& canvas) :
+	Form(canvas)
 {
-	class Layout
-	{
-	public:
-		void Draw();
-		void Attach(Widget* widget);
-		Widget* Contains(const Point& pt);
-	private:
-		Container _Container;
-	};
 }
 
-#endif 
+void GUI_Form::DrawNormal()
+{
+	//Render().Fill(Pos(), Size(), Color(0, 45, 66));
+	Show();
+}
+
+void GUI_Form::DrawHover()
+{
+}
+
+void GUI_Form::DrawActive()
+{
+}

@@ -24,22 +24,44 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Widgets_Layout_hpp
-#define Arcanum_Widgets_Layout_hpp
+#include <Arcanum/UI/Handler.hpp>
 
-#include <Arcanum/Widgets/Container.hpp>
+using namespace Arcanum;
 
-namespace Arcanum
+Handler::Handler() :
+	_Current(nullptr)
 {
-	class Layout
-	{
-	public:
-		void Draw();
-		void Attach(Widget* widget);
-		Widget* Contains(const Point& pt);
-	private:
-		Container _Container;
-	};
 }
 
-#endif 
+void Handler::Add(Screen* screen, const String& name)
+{
+	_Screens.emplace(name, screen);
+}
+
+void Handler::Active(const String& name)
+{
+	_Current = _Screens[name];
+}
+
+void Handler::Show()
+{
+	if (_Current)
+	{
+		_Current->Show();
+	}
+}
+
+void Handler::Handle(const Event& event)
+{
+	if (event.Type == IsEventMove)
+	{
+		Point pos(event.Move.PosX, event.Move.PosY);
+
+		Widget* p = _Current->GetForm()->Contains(pos);
+
+		if (p)
+		{
+			p->State(Widget::StateHover);
+		}
+	}
+}
