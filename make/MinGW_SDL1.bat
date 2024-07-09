@@ -32,6 +32,9 @@
 ..\Decompressor\zlib\trees.c ^
 ..\Decompressor\zlib\uncompr.c ^
 ..\Decompressor\zlib\zutil.c ^
+-I..\Decompressor\include ^
+-I..\Decompressor\zlib ^
+..\Decompressor\source\*.cpp ^
 -lmingw32 -lSDLmain -lSDL
 
 pause

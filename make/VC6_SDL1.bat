@@ -32,6 +32,9 @@ cl /O2 /GX /MT -FeGameSDL1.exe  ^
 ..\Decompressor\zlib\trees.c ^
 ..\Decompressor\zlib\uncompr.c ^
 ..\Decompressor\zlib\zutil.c ^
+/I..\Decompressor\include ^
+/I..\Decompressor\zlib ^
+..\Decompressor\source\*.cpp ^
 /link /LIBPATH:"..\dependencies\SDL-devel-1.2.14-VC6\lib" SDLmain.lib SDL.lib
 
 del *.obj

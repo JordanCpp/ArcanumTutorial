@@ -33,6 +33,9 @@ g++ -Wall -Wextra -pedantic -O2 -std=c++11 -static -s -o GameSDL2 ^
 ..\Decompressor\zlib\trees.c ^
 ..\Decompressor\zlib\uncompr.c ^
 ..\Decompressor\zlib\zutil.c ^
+-I..\Decompressor\include ^
+-I..\Decompressor\zlib ^
+..\Decompressor\source\*.cpp ^
 -lSDL2main -lSDL2
 
 pause

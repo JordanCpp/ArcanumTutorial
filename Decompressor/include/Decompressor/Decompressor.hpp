@@ -1,13 +1,13 @@
 #ifndef Decompressor_hpp
 #define Decompressor_hpp
 
-#include <cstdint>
+#include <stddef.h>
 
 class Decompressor
 {
 public:
-	bool Uncompress(uint8_t* dest, size_t destSize, uint8_t* src, size_t srcSize);
+	bool Uncompress(unsigned char* dest, size_t destSize, unsigned char* src, size_t srcSize);
 private:
 };
 
-#endif     
+#endif
