@@ -30,7 +30,7 @@ DEALINGS IN THE SOFTWARE.
 #include <SDL_config.h>
 #define SDL_main main
 
-#if (_MSC_VER > 1600 || __MINGW32__)
+#if (_MSC_VER > 1600 || __MINGW32__ || __linux__)
     #include <stdint.h>
 #endif
 
