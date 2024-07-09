@@ -25,7 +25,6 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include <Arcanum/GUI/GUI_Form.hpp>
-#include <iostream>
 
 using namespace Arcanum;
 
@@ -50,5 +49,4 @@ void GUI_Form::DrawActive()
 
 void GUI_Form::OnHover()
 {
-	std::cout << "GUI_Form::Hover" << '\n';
 }

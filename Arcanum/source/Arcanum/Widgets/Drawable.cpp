@@ -25,13 +25,12 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include <Arcanum/Widgets/Drawable.hpp>
-#include <iostream>
 
 using namespace Arcanum;
 
 Drawable::Drawable(Canvas& canvas) :
-	_Canvas(canvas),
-	_State(StateNormal)
+    _State(StateNormal),
+	_Canvas(canvas)
 {
 }
 
@@ -51,18 +50,6 @@ void Drawable::Draw()
     default:
         break;
     }
-}
-
-void Drawable::DrawNormal()
-{
-}
-
-void Drawable::DrawHover()
-{
-}
-
-void Drawable::DrawActive()
-{
 }
 
 const Point& Drawable::Pos()

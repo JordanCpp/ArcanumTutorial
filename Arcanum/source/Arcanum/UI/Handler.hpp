@@ -45,6 +45,7 @@ namespace Arcanum
 		typedef UnorderedMap<String, Screen*> container;
 		Screen*   _Current;
 		container _Screens;
+		Widget*   _Widget;
 	};
 }
 

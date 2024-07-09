@@ -56,9 +56,9 @@ namespace Arcanum
 		const Rect& Area();
 		virtual void OnHover() = 0;
 	private:
+		int     _State;
 		Canvas& _Canvas;
 		Rect    _Area;
-		int     _State;
 	};
 }
 

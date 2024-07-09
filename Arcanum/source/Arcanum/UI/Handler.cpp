@@ -29,7 +29,8 @@ DEALINGS IN THE SOFTWARE.
 using namespace Arcanum;
 
 Handler::Handler() :
-	_Current(nullptr)
+	_Current(nullptr),
+	_Widget(nullptr)
 {
 }
 
@@ -53,6 +54,11 @@ void Handler::Show()
 
 void Handler::Handle(const Event& event)
 {
+	if (_Widget)
+	{
+		_Widget->State(Widget::StateNormal);
+	}
+
 	if (event.Type == IsEventMove)
 	{
 		Point pos(event.Move.PosX, event.Move.PosY);
@@ -63,6 +69,8 @@ void Handler::Handle(const Event& event)
 		{
 			p->State(Widget::StateHover);
 			p->OnHover();
+
+			_Widget = p;
 		}
 	}
 }

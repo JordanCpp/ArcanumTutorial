@@ -25,7 +25,6 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include <Arcanum/GUI/GUI_Button.hpp>
-#include <iostream>
 
 using namespace Arcanum;
 
@@ -50,5 +49,4 @@ void GUI_Button::DrawActive()
 
 void GUI_Button::OnHover()
 {
-	std::cout << "GUI_Button::Hover" << '\n';
 }
