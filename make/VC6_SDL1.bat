@@ -17,6 +17,21 @@ cl /O2 /GX /MT -FeGameSDL1.exe  ^
 ..\Arcanum\source\Arcanum\Objects\*.cpp ^
 ..\Arcanum\source\Arcanum\Ui\*.cpp ^
 ..\Arcanum\source\Arcanum\Widgets\*.cpp ^
+..\Decompressor\zlib\adler32.c ^
+..\Decompressor\zlib\compress.c ^
+..\Decompressor\zlib\crc32.c ^
+..\Decompressor\zlib\deflate.c ^
+..\Decompressor\zlib\gzclose.c ^
+..\Decompressor\zlib\gzlib.c ^
+..\Decompressor\zlib\gzread.c ^
+..\Decompressor\zlib\gzwrite.c ^
+..\Decompressor\zlib\inflate.c ^
+..\Decompressor\zlib\infback.c ^
+..\Decompressor\zlib\inftrees.c ^
+..\Decompressor\zlib\inffast.c ^
+..\Decompressor\zlib\trees.c ^
+..\Decompressor\zlib\uncompr.c ^
+..\Decompressor\zlib\zutil.c ^
 /link /LIBPATH:"..\dependencies\SDL-devel-1.2.14-VC6\lib" SDLmain.lib SDL.lib
 
 del *.obj

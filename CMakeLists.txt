@@ -8,9 +8,6 @@ if (MSVC)
     add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)  
 endif()
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 if (WIN32)
     set(SDL2_INCLUDE_DIRS "dependencies/SDL2-2.30.3/include")
     set(SDL2_LIBRARIES SDL2main SDL2)
@@ -26,11 +23,13 @@ endif()
 
 include_directories(${SDL2_INCLUDE_DIRS})
 
+add_subdirectory("Decompressor")
+
 include_directories("Backends/SDL2")
-file(GLOB_RECURSE BACKEND_SOURCES  "Backends/SDL2/Arcanum/*.cpp")
+file(GLOB_RECURSE BACKEND_SOURCES "Backends/SDL2/Arcanum/*.cpp")
 
 include_directories("Arcanum/source")
-file(GLOB_RECURSE ARCANUM_SOURCES  "Arcanum/*.cpp")
+file(GLOB_RECURSE ARCANUM_SOURCES "Arcanum/*.cpp")
 
 add_executable(Game "main.cpp" ${BACKEND_SOURCES} ${ARCANUM_SOURCES})
 target_link_libraries(Game ${SDL2_LIBRARIES})

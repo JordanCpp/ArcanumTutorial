@@ -58,3 +58,21 @@ void MainMenu::Show()
 {
 	_Form.Draw();
 }
+
+NewGame::NewGame(Canvas& canvas) :
+	GUI_Button(canvas)
+{
+}
+
+void NewGame::OnHover()
+{
+}
+
+Exit::Exit(Canvas& canvas) :
+	GUI_Button(canvas)
+{
+}
+
+void Exit::OnHover()
+{
+}

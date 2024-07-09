@@ -18,6 +18,21 @@ g++ -Wall -Wextra -pedantic -O2 -std=c++11 -static -s -o GameSDL2 ^
 ..\Arcanum\source\Arcanum\Objects\*.cpp ^
 ..\Arcanum\source\Arcanum\Ui\*.cpp ^
 ..\Arcanum\source\Arcanum\Widgets\*.cpp ^
+..\Decompressor\zlib\adler32.c ^
+..\Decompressor\zlib\compress.c ^
+..\Decompressor\zlib\crc32.c ^
+..\Decompressor\zlib\deflate.c ^
+..\Decompressor\zlib\gzclose.c ^
+..\Decompressor\zlib\gzlib.c ^
+..\Decompressor\zlib\gzread.c ^
+..\Decompressor\zlib\gzwrite.c ^
+..\Decompressor\zlib\inflate.c ^
+..\Decompressor\zlib\infback.c ^
+..\Decompressor\zlib\inftrees.c ^
+..\Decompressor\zlib\inffast.c ^
+..\Decompressor\zlib\trees.c ^
+..\Decompressor\zlib\uncompr.c ^
+..\Decompressor\zlib\zutil.c ^
 -lSDL2main -lSDL2
 
 pause

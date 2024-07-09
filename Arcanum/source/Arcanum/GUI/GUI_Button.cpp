@@ -46,7 +46,3 @@ void GUI_Button::DrawHover()
 void GUI_Button::DrawActive()
 {
 }
-
-void GUI_Button::OnHover()
-{
-}

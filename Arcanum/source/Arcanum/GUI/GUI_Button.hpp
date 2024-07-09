@@ -38,7 +38,6 @@ namespace Arcanum
 		void DrawNormal();
 		void DrawHover();
 		void DrawActive();
-		void OnHover();
 	private:
 	};
 }

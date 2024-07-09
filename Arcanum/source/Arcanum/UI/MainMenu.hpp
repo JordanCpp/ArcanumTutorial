@@ -33,6 +33,22 @@ DEALINGS IN THE SOFTWARE.
 
 namespace Arcanum
 {
+	class NewGame : public GUI_Button
+	{
+	public:
+		NewGame(Canvas& canvas);
+		void OnHover();
+	private:
+	};
+
+	class Exit : public GUI_Button
+	{
+	public:
+		Exit(Canvas& canvas);
+		void OnHover();
+	private:
+	};
+
 	class MainMenu : public Screen
 	{
 	public:
@@ -43,8 +59,8 @@ namespace Arcanum
 		Canvas&      _Canvas;
 		GUI_Form     _Form;
 		FixedLayout  _Layout;
-		GUI_Button   _NewGame;
-		GUI_Button   _Exit;
+		NewGame      _NewGame;
+		Exit         _Exit;
 	};
 }
 
