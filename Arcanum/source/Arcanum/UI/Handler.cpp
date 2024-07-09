@@ -62,6 +62,7 @@ void Handler::Handle(const Event& event)
 		if (p)
 		{
 			p->State(Widget::StateHover);
+			p->OnHover();
 		}
 	}
 }

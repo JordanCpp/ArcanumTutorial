@@ -25,6 +25,7 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include <Arcanum/Widgets/Drawable.hpp>
+#include <iostream>
 
 using namespace Arcanum;
 
