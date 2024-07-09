@@ -31,8 +31,8 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
-Canvas::Canvas(const Point& size, const String& title) :
-	_Screen(nullptr),
+Canvas::Canvas(const Point& size, const std::string& title) :
+	_Screen(NULL),
 	_Size(size)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
@@ -81,7 +81,7 @@ void Canvas::Present()
 
 void Canvas::Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize)
 {
-	assert(texture != nullptr);
+	assert(texture != NULL);
 	assert(dstPos.x >= 0);
 	assert(dstPos.y >= 0);
 	assert(dstSize.x > 0);

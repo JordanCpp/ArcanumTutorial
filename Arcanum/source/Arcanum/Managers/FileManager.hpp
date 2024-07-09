@@ -35,7 +35,7 @@ namespace Arcanum
 	{
 	public:
 		FileManager(FileLoader& fileLoader);
-		const Vector<uint8_t>& File(const String& path);
+		const std::vector<uint8_t>& File(const std::string& path);
 	private:
 		FileLoader& _FileLoader;
 	};

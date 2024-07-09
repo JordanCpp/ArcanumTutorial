@@ -29,17 +29,17 @@ DEALINGS IN THE SOFTWARE.
 using namespace Arcanum;
 
 Handler::Handler() :
-	_Current(nullptr),
-	_Widget(nullptr)
+	_Current(NULL),
+	_Widget(NULL)
 {
 }
 
-void Handler::Add(Screen* screen, const String& name)
+void Handler::Add(Screen* screen, const std::string& name)
 {
-	_Screens.emplace(name, screen);
+	_Screens.insert(std::make_pair(name, screen));
 }
 
-void Handler::Active(const String& name)
+void Handler::Active(const std::string& name)
 {
 	_Current = _Screens[name];
 }

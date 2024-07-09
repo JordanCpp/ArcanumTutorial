@@ -28,12 +28,12 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
-const String& Settings::Title()
+const std::string& Settings::Title()
 {
 	return _Title;
 }
 
-void Settings::Title(const String& title)
+void Settings::Title(const std::string& title)
 {
 	_Title = title;
 }

@@ -35,14 +35,20 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
-void ImageLoader::Load(const Vector<uint8_t>& data)
+ImageLoader::ImageLoader() :
+	_Bpp(0),
+	_Pixels(NULL)
 {
-	if (_Pixels != nullptr)
+}
+
+void ImageLoader::Load(const std::vector<uint8_t>& data)
+{
+	if (_Pixels != NULL)
 	{
 		stbi_image_free(_Pixels);
 	}
 
-	_Pixels = stbi_load_from_memory(data.data(), (int)data.size(), &_Size.x, &_Size.y, &_Bpp, STBI_default);
+	_Pixels = stbi_load_from_memory(&data[0], (int)data.size(), &_Size.x, &_Size.y, &_Bpp, STBI_default);
 
 	if (!_Pixels)
 	{

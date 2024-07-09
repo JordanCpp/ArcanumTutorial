@@ -29,7 +29,7 @@ DEALINGS IN THE SOFTWARE.
 
 #include <Arcanum/UI/Screen.hpp>
 #include <Arcanum/Events/Event.hpp>
-#include <Arcanum/Common/UnorderedMap.hpp>
+#include <map>
 
 namespace Arcanum
 {
@@ -37,12 +37,12 @@ namespace Arcanum
 	{
 	public:
 		Handler();
-		void Add(Screen* screen, const String& name);
-		void Active(const String& name);
+		void Add(Screen* screen, const std::string& name);
+		void Active(const std::string& name);
 		void Show();
 		void Handle(const Event& event);
 	private:
-		typedef UnorderedMap<String, Screen*> container;
+		typedef std::map<std::string, Screen*> container;
 		Screen*   _Current;
 		container _Screens;
 		Widget*   _Widget;

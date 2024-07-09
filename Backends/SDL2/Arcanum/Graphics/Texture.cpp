@@ -45,13 +45,13 @@ const uint32_t A_MASK = 0xff000000;
 const uint8_t bitSize = 8;
 
 Texture::Texture(Canvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels) :
-    _Texture(nullptr),
+    _Texture(NULL),
     _Size(size)
 {
-    assert(canvas != nullptr);
+    assert(canvas != NULL);
     assert(size.x > 0);
     assert(size.y > 0);
-    assert(pixels != nullptr);
+    assert(pixels != NULL);
 
 	SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(pixels, size.x, size.y, bitSize * bpp, size.x * bpp, R_MASK, G_MASK, B_MASK, A_MASK);
 
@@ -69,13 +69,13 @@ Texture::Texture(Canvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels
 }
 
 Texture::Texture(Canvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels, const Color& key) :
-    _Texture(nullptr),
+    _Texture(NULL),
     _Size(size)
 {
-    assert(canvas != nullptr);
+    assert(canvas != NULL);
     assert(size.x > 0);
     assert(size.y > 0);
-    assert(pixels != nullptr);
+    assert(pixels != NULL);
 
     SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(pixels, size.x, size.y, bitSize * bpp, size.x * bpp, R_MASK, G_MASK, B_MASK, A_MASK);
     

@@ -27,7 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Graphics_Color_hpp
 #define Arcanum_Graphics_Color_hpp
 
-#include <cstdint>
+#include <Arcanum/Types.hpp>
 
 namespace Arcanum
 {
@@ -42,4 +42,4 @@ namespace Arcanum
 	};
 }
 
-#endif 
+#endif

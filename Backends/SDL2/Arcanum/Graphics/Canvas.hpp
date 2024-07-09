@@ -28,7 +28,7 @@ DEALINGS IN THE SOFTWARE.
 #define Arcanum_Canvas_hpp
 
 #include <SDL.h>
-#include <Arcanum/Common/String.hpp>
+#include <string>
 #include <Arcanum/Graphics/Canvas.hpp>
 #include <Arcanum/Graphics/Point.hpp>
 #include <Arcanum/Events/Event.hpp>
@@ -41,7 +41,7 @@ namespace Arcanum
 	class Canvas
 	{
 	public:
-		Canvas(const Point& size, const String& title);
+		Canvas(const Point& size, const std::string& title);
 		~Canvas();
 		const Point& Size() const;
 		void Fill(const Point& pos, const Point& size, const Color& color) const;
@@ -56,4 +56,4 @@ namespace Arcanum
 	};
 }
 
-#endif 
+#endif

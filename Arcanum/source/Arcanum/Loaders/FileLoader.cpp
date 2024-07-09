@@ -36,9 +36,9 @@ FileLoader::FileLoader(size_t bufferMax)
 	_Buffer.reserve(bufferMax);
 }
 
-void FileLoader::Reset(const String& path)
+void FileLoader::Reset(const std::string& path)
 {
-	std::ifstream file(path, std::ios::in | std::ios::binary);
+	std::ifstream file(path.c_str(), std::ios::in | std::ios::binary);
 
 	if (!file.is_open() || file.bad())
 	{
@@ -53,10 +53,10 @@ void FileLoader::Reset(const String& path)
 
 	_Buffer.resize(fileSize);
 
-	file.read((char*)_Buffer.data(), fileSize);
+	file.read((char*)&_Buffer[0], fileSize);
 }
 
-const Vector<uint8_t>& FileLoader::Content()
+const std::vector<uint8_t>& FileLoader::Content()
 {
 	return _Buffer;
 }

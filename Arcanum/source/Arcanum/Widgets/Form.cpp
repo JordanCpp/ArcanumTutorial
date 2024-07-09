@@ -30,7 +30,7 @@ using namespace Arcanum;
 
 Form::Form(Canvas& canvas) :
 	Drawable(canvas),
-	_Layout(nullptr)
+	_Layout(NULL)
 {
 	Size(Render().Size());
 }

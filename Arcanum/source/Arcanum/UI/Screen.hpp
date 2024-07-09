@@ -34,6 +34,7 @@ namespace Arcanum
 	class Screen
 	{
 	public:
+		virtual ~Screen() {};
 		virtual Form* GetForm() = 0;
 		virtual void Show() = 0;
 	private:

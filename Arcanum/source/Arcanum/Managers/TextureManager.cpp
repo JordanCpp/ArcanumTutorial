@@ -39,17 +39,17 @@ TextureManager::TextureManager(Canvas* canvas, const Color& colorKey, FileManage
 
 TextureManager::~TextureManager()
 {
-	for (auto&& i : _Textures)
+	for (container::iterator i = _Textures.begin(); i != _Textures.end(); i++)
 	{
-		delete i.second;
+		delete i->second;
 	}
 }
 
-Texture* TextureManager::GetTexture(const String& path)
+Texture* TextureManager::GetTexture(const std::string& path)
 {
-	auto i = _Textures.find(path);
+	container::iterator i = _Textures.find(path);
 
-	Texture* result = nullptr;
+	Texture* result = NULL;
 
 	if (i == _Textures.end())
 	{
@@ -57,7 +57,7 @@ Texture* TextureManager::GetTexture(const String& path)
 
 		result = new Texture(_Canvas, _ImageLoader.Size(), _ImageLoader.Bpp(), _ImageLoader.Pixels(), _ColorKey);
 
-		_Textures.emplace(path, result);
+		_Textures.insert(std::make_pair(path, result));
 
 		return result;
 	}

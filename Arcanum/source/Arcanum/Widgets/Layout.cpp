@@ -53,5 +53,5 @@ Widget* Layout::Contains(const Point& pt)
 		}
 	}
 
-	return nullptr;
+	return NULL;
 }

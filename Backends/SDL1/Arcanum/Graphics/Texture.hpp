@@ -50,4 +50,4 @@ namespace Arcanum
 	};
 }
 
-#endif 
+#endif

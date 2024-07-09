@@ -24,15 +24,20 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Common_UnorderedMap_hpp
-#define Arcanum_Common_UnorderedMap_hpp
+#ifndef Arcanum_Types_hpp
+#define Arcanum_Types_hpp
 
-#include <unordered_map>
+#if (_MSC_VER <= 1600 && !__MINGW32__)
+typedef unsigned char uint8_t;
+typedef signed char   int8_t;
 
-namespace Arcanum 
-{
-	template<class K, class T>
-	using UnorderedMap = std::unordered_map<K, T>;
-}
+typedef unsigned short uint16_t;
+typedef signed short   int16_t;
 
-#endif 
+typedef unsigned int   uint32_t;
+typedef signed int     int32_t;
+#else
+    #include <stdint.h>
+#endif
+
+#endif
