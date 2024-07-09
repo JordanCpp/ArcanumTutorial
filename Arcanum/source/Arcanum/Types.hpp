@@ -27,16 +27,10 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Types_hpp
 #define Arcanum_Types_hpp
 
-#if (_MSC_VER <= 1600 && !__MINGW32__)
-typedef unsigned char uint8_t;
-typedef signed char   int8_t;
+#include <SDL_config.h>
+#define SDL_main main
 
-typedef unsigned short uint16_t;
-typedef signed short   int16_t;
-
-typedef unsigned int   uint32_t;
-typedef signed int     int32_t;
-#else
+#if (_MSC_VER > 1600 || __MINGW32__)
     #include <stdint.h>
 #endif
 
