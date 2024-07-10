@@ -32,6 +32,9 @@ using namespace Arcanum;
 
 int main(int argc, char* argv[])
 {
+	UNUSED_PARAMETR(argc);
+	UNUSED_PARAMETR(argv);
+
 	try
 	{
 		Settings settings;

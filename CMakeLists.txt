@@ -23,7 +23,24 @@ endif()
 
 include_directories(${SDL2_INCLUDE_DIRS})
 
-add_subdirectory("Decompressor")
+include_directories("dependencies/zlib")
+
+file(GLOB ZLIB_SOURCES 
+"dependencies/zlib/adler32.c"
+"dependencies/zlib/compress.c"
+"dependencies/zlib/crc32.c"
+"dependencies/zlib/deflate.c"
+"dependencies/zlib/gzclose.c"
+"dependencies/zlib/gzlib.c"
+"dependencies/zlib/gzread.c"
+"dependencies/zlib/gzwrite.c"
+"dependencies/zlib/inflate.c"
+"dependencies/zlib/infback.c"
+"dependencies/zlib/inftrees.c"
+"dependencies/zlib/inffast.c"
+"dependencies/zlib/trees.c"
+"dependencies/zlib/uncompr.c"
+"dependencies/zlib/zutil.c")
 
 include_directories("Backends/SDL2")
 file(GLOB_RECURSE BACKEND_SOURCES "Backends/SDL2/Arcanum/*.cpp")
@@ -31,5 +48,5 @@ file(GLOB_RECURSE BACKEND_SOURCES "Backends/SDL2/Arcanum/*.cpp")
 include_directories("Arcanum/source")
 file(GLOB_RECURSE ARCANUM_SOURCES "Arcanum/*.cpp")
 
-add_executable(Game "main.cpp" ${BACKEND_SOURCES} ${ARCANUM_SOURCES})
+add_executable(Game "main.cpp" ${BACKEND_SOURCES} ${ARCANUM_SOURCES} ${ZLIB_SOURCES})
 target_link_libraries(Game ${SDL2_LIBRARIES})

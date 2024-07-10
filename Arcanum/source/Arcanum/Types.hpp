@@ -34,4 +34,6 @@ DEALINGS IN THE SOFTWARE.
     #include <stdint.h>
 #endif
 
+#define UNUSED_PARAMETR(x) (void)(x)
+
 #endif

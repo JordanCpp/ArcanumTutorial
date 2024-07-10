@@ -11,6 +11,7 @@ g++ -Wall -Wextra -pedantic -O2 -std=c++11 -static -s -o GameSDL2 ^
 ..\main.cpp ^
 ..\Arcanum\source\Arcanum\*.cpp ^
 ..\Arcanum\source\Arcanum\Common\*.cpp ^
+..\Arcanum\source\Arcanum\Formats\*.cpp ^
 ..\Arcanum\source\Arcanum\Game\*.cpp ^
 ..\Arcanum\source\Arcanum\Graphics\*.cpp ^
 ..\Arcanum\source\Arcanum\GUI\*.cpp ^
@@ -36,9 +37,7 @@ g++ -Wall -Wextra -pedantic -O2 -std=c++11 -static -s -o GameSDL2 ^
 ..\dependencies\zlib\trees.c ^
 ..\dependencies\zlib\uncompr.c ^
 ..\dependencies\zlib\zutil.c ^
--I..\Decompressor\include ^
 -I..\dependencies\zlib ^
-..\Decompressor\source\*.cpp ^
 -lSDL2main -lSDL2
 
 pause
