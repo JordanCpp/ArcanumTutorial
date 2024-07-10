@@ -54,6 +54,8 @@ void Engine::Run()
 
 	while (_EventHandler.GetEvent(report))
 	{
+		_FpsCounter.Start();
+
 		if (report.Type == IsEventQuit)
 		{
 			_EventHandler.StopEvent();
@@ -69,5 +71,11 @@ void Engine::Run()
 		_Handler.Show();
 
 		_Canvas.Present();
+
+		if (_FpsCounter.Calc())
+		{
+			_Canvas.Title(_IntToChars.Convert(_FpsCounter.Fps()));
+			_FpsCounter.Clear();
+		}
 	}
 }

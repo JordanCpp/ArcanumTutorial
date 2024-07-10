@@ -1,20 +1,20 @@
 
 include_directories("include")
-include_directories("zlib")
+include_directories("../dependencies/zlib")
 file(GLOB_RECURSE DECOMPRESSOR_SOURCES "source/*.cpp")
 add_library(Decompressor ${DECOMPRESSOR_SOURCES}
-"zlib/adler32.c"
-"zlib/compress.c"
-"zlib/crc32.c"
-"zlib/deflate.c"
-"zlib/gzclose.c"
-"zlib/gzlib.c"
-"zlib/gzread.c"
-"zlib/gzwrite.c"
-"zlib/inflate.c"
-"zlib/infback.c"
-"zlib/inftrees.c"
-"zlib/inffast.c"
-"zlib/trees.c"
-"zlib/uncompr.c"
-"zlib/zutil.c")
+"../dependencies/zlib/adler32.c"
+"../dependencies/zlib/compress.c"
+"../dependencies/zlib/crc32.c"
+"../dependencies/zlib/deflate.c"
+"../dependencies/zlib/gzclose.c"
+"../dependencies/zlib/gzlib.c"
+"../dependencies/zlib/gzread.c"
+"../dependencies/zlib/gzwrite.c"
+"../dependencies/zlib/inflate.c"
+"../dependencies/zlib/infback.c"
+"../dependencies/zlib/inftrees.c"
+"../dependencies/zlib/inffast.c"
+"../dependencies/zlib/trees.c"
+"../dependencies/zlib/uncompr.c"
+"../dependencies/zlib/zutil.c")

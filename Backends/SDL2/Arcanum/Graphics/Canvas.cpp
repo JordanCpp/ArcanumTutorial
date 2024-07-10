@@ -57,6 +57,11 @@ Canvas::~Canvas()
 	SDL_Quit();
 }
 
+void Canvas::Title(const std::string& title)
+{
+	SDL_SetWindowTitle(_Window, title.c_str());
+}
+
 const Point& Canvas::Size() const
 {
 	return _Size;

@@ -43,6 +43,7 @@ namespace Arcanum
 	public:
 		Canvas(const Point& size, const std::string& title);
 		~Canvas();
+		void Title(const std::string& title);
 		const Point& Size() const;
 		void Fill(const Point& pos, const Point& size, const Color& color) const;
 		void Present();

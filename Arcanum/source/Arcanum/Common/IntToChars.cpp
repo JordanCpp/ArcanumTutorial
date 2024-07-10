@@ -24,35 +24,74 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Canvas_hpp
-#define Arcanum_Canvas_hpp
+#include <Arcanum/Types.hpp>
+#include <Arcanum/Common/IntToChars.hpp>
+#include <string.h>
 
-#include <SDL.h>
-#include <string>
-#include <Arcanum/Graphics/Canvas.hpp>
-#include <Arcanum/Graphics/Point.hpp>
-#include <Arcanum/Events/Event.hpp>
-#include <Arcanum/Graphics/Color.hpp>
+using namespace Arcanum;
 
-namespace Arcanum
+IntToChars::IntToChars() :
+	_Result(0)
 {
-	class Texture;
-
-	class Canvas
-	{
-	public:
-		Canvas(const Point& size, const std::string& title);
-		~Canvas();
-		void Title(const std::string& title);
-		const Point& Size() const;
-		void Fill(const Point& pos, const Point& size, const Color& color) const;
-		void Present();
-		void Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
-		void Draw(Texture* texture, const Point& dstPos);
-	private:
-		SDL_Surface* _Screen;
-		Point        _Size;
-	};
+	memset(&_Buffer, 0, sizeof(_Buffer));
 }
 
-#endif 
+const char* IntToChars::Convert(int num, uint8_t base)
+{
+	int i = 0;
+	bool isNegative = false;
+
+	if (num == 0)
+	{
+		_Buffer[i++] = '0';
+		_Buffer[i] = '\0';
+	}
+
+	if (num < 0 && base == 10)
+	{
+		isNegative = true;
+		num = -num;
+	}
+
+	while (num != 0)
+	{
+		char rem = num % base;
+		_Buffer[i++] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
+		num = num / base;
+	}
+
+	if (isNegative)
+		_Buffer[i++] = '-';
+
+	_Buffer[i] = '\0';
+
+	Reverse(_Buffer, i);
+
+	return _Buffer;
+}
+
+const char* IntToChars::Convert(size_t num)
+{
+	return Convert((int)num, 10);
+}
+
+
+void IntToChars::Swap(char& t1, char& t2)
+{
+	char tmp = t1;
+	t1 = t2;
+	t2 = tmp;
+}
+
+void IntToChars::Reverse(char* str, size_t length)
+{
+	size_t start = 0;
+	size_t end = length - 1;
+
+	while (start < end)
+	{
+		Swap(*(str + start), *(str + end));
+		start++;
+		end--;
+	}
+}

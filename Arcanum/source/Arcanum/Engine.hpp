@@ -34,6 +34,8 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/Events/EventHandler.hpp>
 #include <Arcanum/UI/MainMenu.hpp>
 #include <Arcanum/UI/Handler.hpp>
+#include <Arcanum/Time/FpsCounter.hpp>
+#include <Arcanum/Common/IntToChars.hpp>
 
 namespace Arcanum
 {
@@ -44,6 +46,8 @@ namespace Arcanum
 		~Engine();
 		void Run();
 	private:
+		IntToChars     _IntToChars;
+		FpsCounter     _FpsCounter;
 		Color          _ColorKey;
 		Settings&      _Settings;
 		Canvas         _Canvas;

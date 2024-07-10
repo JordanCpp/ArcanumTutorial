@@ -24,35 +24,27 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Canvas_hpp
-#define Arcanum_Canvas_hpp
+#ifndef Arcanum_FpsCounter_hpp
+#define Arcanum_FpsCounter_hpp
 
-#include <SDL.h>
-#include <string>
-#include <Arcanum/Graphics/Canvas.hpp>
-#include <Arcanum/Graphics/Point.hpp>
-#include <Arcanum/Events/Event.hpp>
-#include <Arcanum/Graphics/Color.hpp>
+#include <stddef.h>
 
 namespace Arcanum
 {
-	class Texture;
-
-	class Canvas
+	class FpsCounter
 	{
 	public:
-		Canvas(const Point& size, const std::string& title);
-		~Canvas();
-		void Title(const std::string& title);
-		const Point& Size() const;
-		void Fill(const Point& pos, const Point& size, const Color& color) const;
-		void Present();
-		void Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
-		void Draw(Texture* texture, const Point& dstPos);
+		FpsCounter();
+		void Start();
+		bool Calc();
+		size_t Fps();
+		void Clear();
 	private:
-		SDL_Surface* _Screen;
-		Point        _Size;
+		size_t _Current;
+		size_t _Delta;
+		size_t _Old;
+		size_t _Fps;
 	};
 }
 
-#endif 
+#endif
