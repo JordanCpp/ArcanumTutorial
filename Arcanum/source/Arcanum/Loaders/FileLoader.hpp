@@ -29,7 +29,7 @@ DEALINGS IN THE SOFTWARE.
 
 #include <vector>
 #include <string>
-#include <Arcanum/Types.hpp>
+#include <stddef.h>
 
 namespace Arcanum
 {
@@ -38,9 +38,9 @@ namespace Arcanum
 	public:
 		FileLoader(size_t bufferMax);
 		void Reset(const std::string& path);
-		const std::vector<uint8_t>& Content();
+		const std::vector<unsigned char>& Content();
 	private:
-		std::vector<uint8_t> _Buffer;
+		std::vector<unsigned char> _Buffer;
 	};
 }
 

@@ -30,6 +30,8 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
+#define UNUSED_PARAMETR(x) (void)(x)
+
 int main(int argc, char* argv[])
 {
 	UNUSED_PARAMETR(argc);

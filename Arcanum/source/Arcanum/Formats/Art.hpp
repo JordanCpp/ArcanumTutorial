@@ -27,16 +27,14 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Formats_Art_hpp
 #define Arcanum_Formats_Art_hpp
 
-#include <Arcanum/Types.hpp>
-
 namespace Arcanum
 {
 	struct ArtColor
 	{
-		uint8_t b;
-		uint8_t	g;
-		uint8_t	r;
-		uint8_t	a;
+		unsigned char b;
+		unsigned char g;
+		unsigned char r;
+		unsigned char a;
 	};
 
 	struct ArtTable
@@ -46,11 +44,11 @@ namespace Arcanum
 
 	struct ArtHeader
 	{
-		uint32_t h0[3];
+		unsigned int h0[3];
 		ArtColor stupid_color[4];
 
-		uint32_t frame_num_low;
-		uint32_t frame_num;
+		unsigned int frame_num_low;
+		unsigned int frame_num;
 
 		ArtColor palette_data1[8];
 		ArtColor palette_data2[8];
@@ -59,9 +57,9 @@ namespace Arcanum
 
 	struct ArtFrameHeader
 	{
-		uint32_t width;
-		uint32_t height;
-		uint32_t size;
+		unsigned int width;
+		unsigned int height;
+		unsigned int size;
 		int c_x;
 		int c_y;
 		int d_x;

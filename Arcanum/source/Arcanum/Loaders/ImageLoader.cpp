@@ -40,14 +40,14 @@ ImageLoader::ImageLoader() :
 {
 }
 
-void ImageLoader::Load(const std::vector<uint8_t>& data)
+void ImageLoader::Load(const std::vector<unsigned char>& data)
 {
 	if (_Pixels != NULL)
 	{
 		stbi_image_free(_Pixels);
 	}
 
-	_Pixels = (uint8_t*)stbi_load_from_memory((stbi_uc*)&data[0], (int)data.size(), &_Size.x, &_Size.y, &_Bpp, STBI_default);
+	_Pixels = (unsigned char*)stbi_load_from_memory((stbi_uc*)&data[0], (int)data.size(), &_Size.x, &_Size.y, &_Bpp, STBI_default);
 
 	if (!_Pixels)
 	{
@@ -60,7 +60,7 @@ int ImageLoader::Bpp()
 	return _Bpp;
 }
 
-uint8_t* ImageLoader::Pixels()
+unsigned char* ImageLoader::Pixels()
 {
 	return _Pixels;
 }

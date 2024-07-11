@@ -24,7 +24,6 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include <Arcanum/Types.hpp>
 #include <Arcanum/Common/IntToChars.hpp>
 #include <string.h>
 
@@ -36,7 +35,7 @@ IntToChars::IntToChars() :
 	memset(&_Buffer, 0, sizeof(_Buffer));
 }
 
-const char* IntToChars::Convert(int num, uint8_t base)
+const char* IntToChars::Convert(int num, unsigned char base)
 {
 	int i = 0;
 	bool isNegative = false;

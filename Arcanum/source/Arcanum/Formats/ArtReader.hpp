@@ -24,16 +24,18 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Types_hpp
-#define Arcanum_Types_hpp
+#ifndef Aracnum_Formats_ArtReader_hpp
+#define Aracnum_Formats_ArtReader_hpp
 
-#include <SDL_config.h>
-#define SDL_main main
+#include <Arcanum/Formats/Art.hpp>
 
-#if (_MSC_VER > 1600 || __MINGW32__ || __linux__)
-    #include <stdint.h>
-#endif
+namespace Aracnum
+{
+    class ArtReader
+    {
+    public:
+    private:
+    };
+}
 
-#define UNUSED_PARAMETR(x) (void)(x)
-
-#endif
+#endif 

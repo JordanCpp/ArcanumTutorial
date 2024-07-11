@@ -68,7 +68,7 @@ Texture::Texture(Canvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels
     SDL_FreeSurface(surface);
 }
 
-Texture::Texture(Canvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels, const Color& key) :
+Texture::Texture(Canvas* canvas, const Point& size, unsigned char bpp, unsigned char* pixels, const Color& key) :
     _Texture(NULL),
     _Size(size)
 {

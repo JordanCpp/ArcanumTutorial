@@ -27,18 +27,16 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Graphics_Color_hpp
 #define Arcanum_Graphics_Color_hpp
 
-#include <Arcanum/Types.hpp>
-
 namespace Arcanum
 {
 	class Color
 	{
 	public:
-		Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255);
-		uint8_t r;
-		uint8_t g;
-		uint8_t b;
-		uint8_t a;
+		Color(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 255);
+		unsigned char r;
+		unsigned char g;
+		unsigned char b;
+		unsigned char a;
 	};
 }
 

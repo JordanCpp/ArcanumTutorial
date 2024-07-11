@@ -40,7 +40,7 @@ namespace Arcanum
 		};
 
 		IntToChars();
-		const char* Convert(int num, uint8_t base = 10);
+		const char* Convert(int num, unsigned char base = 10);
 		const char* Convert(size_t num);
 	private:
 		void Swap(char& t1, char& t2);

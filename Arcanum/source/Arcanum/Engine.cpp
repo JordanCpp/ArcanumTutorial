@@ -66,8 +66,6 @@ void Engine::Run()
 		Texture* texture = _TextureManager.GetTexture("data/art/tile/grsbse0c_0_0_0.bmp");
 		_Canvas.Draw(texture, Point(0, 0));
 
-		_Canvas.Fill(Point(100, 100), Point(100, 100), Color(237, 28, 36));
-
 		_Handler.Show();
 
 		_Canvas.Present();

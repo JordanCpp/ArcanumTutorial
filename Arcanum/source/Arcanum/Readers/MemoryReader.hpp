@@ -27,26 +27,25 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Readers_MemoryReader_hpp
 #define Arcanum_Readers_MemoryReader_hpp
 
-#include <cstddef>
+#include <stddef.h>
 #include <vector>
-#include <Arcanum/Types.hpp>
 
 namespace Arcanum
 {
 	class MemoryReader
 	{
 	public:
-		MemoryReader(const std::vector<uint8_t>& buffer);
+		MemoryReader(const std::vector<unsigned char>& buffer);
 		void Read(void* dst, size_t size);
-		uint8_t u8();
-		int8_t i8();
-		uint16_t u16();
-		int16_t i16();
-		uint32_t u32();
-		int32_t i32();
+		unsigned char u8();
+		signed char i8();
+		unsigned short u16();
+		signed short i16();
+		unsigned int u32();
+		signed int i32();
 	private:
-		size_t                 _Offset;
-		const std::vector<uint8_t>& _Buffer;
+		size_t                            _Offset;
+		const std::vector<unsigned char>& _Buffer;
 	};
 }
 

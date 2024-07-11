@@ -24,18 +24,6 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Readers_ArtReader_hpp
-#define Arcanum_Readers_ArtReader_hpp
+#include <Arcanum/Formats/ArtReader.hpp>
 
-#include <Arcanum/Formats/Art.hpp>
-
-namespace Arcanum
-{
-	class ArtReader
-	{
-	public:
-	private:
-	};
-}
-
-#endif 
+using namespace Aracnum;

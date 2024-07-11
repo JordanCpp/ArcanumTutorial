@@ -34,6 +34,8 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/Events/Event.hpp>
 #include <Arcanum/Graphics/Color.hpp>
 
+#define SDL_main main
+
 namespace Arcanum
 {
 	class Texture;

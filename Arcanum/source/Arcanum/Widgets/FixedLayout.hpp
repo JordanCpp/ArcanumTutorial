@@ -34,6 +34,7 @@ namespace Arcanum
 	class FixedLayout : public Layout
 	{
 	public:
+		FixedLayout();
 	private:
 	};
 }

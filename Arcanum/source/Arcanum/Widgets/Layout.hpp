@@ -34,10 +34,18 @@ namespace Arcanum
 	class Layout
 	{
 	public:
+		enum
+		{
+			Fixed,
+			Vertical,
+			Horizontal
+		};
+		Layout(int type);
 		void Draw();
 		void Attach(Widget* widget);
 		Widget* Contains(const Point& pt);
 	private:
+		int       _Type;
 		Container _Container;
 	};
 }

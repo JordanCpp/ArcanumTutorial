@@ -56,7 +56,7 @@ void FileLoader::Reset(const std::string& path)
 	file.read((char*)&_Buffer[0], fileSize);
 }
 
-const std::vector<uint8_t>& FileLoader::Content()
+const std::vector<unsigned char>& FileLoader::Content()
 {
 	return _Buffer;
 }

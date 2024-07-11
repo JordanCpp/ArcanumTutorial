@@ -28,6 +28,11 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
+Layout::Layout(int type) :
+	_Type(type)
+{
+}
+
 void Layout::Draw()
 {
 	for (size_t i = 0; i < _Container.Widgets().size(); i++)

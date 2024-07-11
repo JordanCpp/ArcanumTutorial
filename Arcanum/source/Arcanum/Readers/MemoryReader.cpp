@@ -30,7 +30,7 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
-MemoryReader::MemoryReader(const std::vector<uint8_t>& buffer) :
+MemoryReader::MemoryReader(const std::vector<unsigned char>& buffer) :
 	_Offset(0),
 	_Buffer(buffer)
 {
@@ -45,56 +45,56 @@ void MemoryReader::Read(void* dst, size_t size)
 	_Offset += size;
 }
 
-uint8_t MemoryReader::u8()
+unsigned char MemoryReader::u8()
 {
-	uint8_t result = 0;
+	unsigned char result = 0;
 
-	Read(&result, sizeof(uint8_t));
+	Read(&result, sizeof(unsigned char));
 
 	return result;
 }
 
-int8_t MemoryReader::i8()
+signed char MemoryReader::i8()
 {
-	int8_t result = 0;
+	signed char result = 0;
 
-	Read(&result, sizeof(int8_t));
+	Read(&result, sizeof(signed char));
 
 	return result;
 }
 
-uint16_t MemoryReader::u16()
+unsigned short MemoryReader::u16()
 {
-	uint16_t result = 0;
+	unsigned short result = 0;
 
-	Read(&result, sizeof(uint16_t));
+	Read(&result, sizeof(unsigned short));
 
 	return result;
 }
 
-int16_t MemoryReader::i16()
+signed short MemoryReader::i16()
 {
-	int16_t result = 0;
+	signed short result = 0;
 
-	Read(&result, sizeof(int16_t));
+	Read(&result, sizeof(signed short));
 
 	return result;
 }
 
-uint32_t MemoryReader::u32()
+unsigned int MemoryReader::u32()
 {
-	uint32_t result = 0;
+	unsigned int result = 0;
 
-	Read(&result, sizeof(uint32_t));
+	Read(&result, sizeof(unsigned int));
 
 	return result;
 }
 
-int32_t MemoryReader::i32()
+signed int MemoryReader::i32()
 {
-	int32_t result = 0;
+	signed int result = 0;
 
-	Read(&result, sizeof(int32_t));
+	Read(&result, sizeof(signed int));
 
 	return result;
 }

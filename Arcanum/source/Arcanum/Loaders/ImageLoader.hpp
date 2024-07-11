@@ -37,14 +37,14 @@ namespace Arcanum
 	{
 	public:
 		ImageLoader();
-		void Load(const std::vector<uint8_t>& data);
+		void Load(const std::vector<unsigned char>& data);
 		int Bpp();
-		uint8_t* Pixels();
+		unsigned char* Pixels();
 		const Point& Size();
 	private:
-		int      _Bpp;
-		uint8_t* _Pixels;
-		Point    _Size;
+		int            _Bpp;
+		unsigned char* _Pixels;
+		Point          _Size;
 	};
 }
 

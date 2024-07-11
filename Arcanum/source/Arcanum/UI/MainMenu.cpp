@@ -41,7 +41,7 @@ MainMenu::MainMenu(Canvas& canvas) :
 	Point buttonSize(150, 35);
 
 	int x = 15;
-	int y = 20;
+	int y = 200;
 
 	_NewGame.Resize(Point(x, y), buttonSize);
 
