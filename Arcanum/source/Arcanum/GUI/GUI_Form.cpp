@@ -46,7 +46,3 @@ void GUI_Form::DrawHover()
 void GUI_Form::DrawActive()
 {
 }
-
-void GUI_Form::OnHover()
-{
-}

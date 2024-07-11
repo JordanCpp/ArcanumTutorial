@@ -54,7 +54,7 @@ namespace Arcanum
 		int State();
 		void State(int state);
 		const Rect& Area();
-		virtual void OnHover() = 0;
+		virtual void OnHover(const Point& pos) = 0;
 	private:
 		int     _State;
 		Canvas& _Canvas;

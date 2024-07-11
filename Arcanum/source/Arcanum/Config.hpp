@@ -24,22 +24,9 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_GUI_Form_hpp
-#define Arcanum_GUI_Form_hpp
+#ifndef Arcanum_Config_hpp
+#define Arcanum_Config_hpp
 
-#include <Arcanum/Widgets/Form.hpp>
-
-namespace Arcanum
-{
-	class GUI_Form : public Form
-	{
-	public:
-		GUI_Form(Canvas& canvas);
-		void DrawNormal();
-		void DrawHover();
-		void DrawActive();
-	private:
-	};
-}
+#define UNUSED_PARAMETR(x) (void)(x)
 
 #endif 

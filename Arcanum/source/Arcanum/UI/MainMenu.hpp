@@ -30,14 +30,23 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/UI/Screen.hpp>
 #include <Arcanum/GUI/GUI_Button.hpp>
 #include <Arcanum/GUI/GUI_Form.hpp>
+#include <Arcanum/Config.hpp>
 
 namespace Arcanum
 {
+	class Background : public GUI_Form
+	{
+	public:
+		Background(Canvas& canvas);
+		void OnHover(const Point& pos);
+	private:
+	};
+
 	class NewGame : public GUI_Button
 	{
 	public:
 		NewGame(Canvas& canvas);
-		void OnHover();
+		void OnHover(const Point& pos);
 	private:
 	};
 
@@ -45,7 +54,7 @@ namespace Arcanum
 	{
 	public:
 		Exit(Canvas& canvas);
-		void OnHover();
+		void OnHover(const Point& pos);
 	private:
 	};
 
@@ -57,7 +66,7 @@ namespace Arcanum
 		void Show();
 	private:
 		Canvas&      _Canvas;
-		GUI_Form     _Form;
+		Background   _Form;
 		FixedLayout  _Layout;
 		NewGame      _NewGame;
 		Exit         _Exit;

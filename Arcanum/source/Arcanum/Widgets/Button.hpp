@@ -36,7 +36,7 @@ namespace Arcanum
 	public:
 		Button(Canvas& canvas);
 		void Resize(const Point& pos, const Point& size);
-		virtual void OnHover() = 0;
+		virtual void OnHover(const Point& pos) = 0;
 	private:
 	};
 }

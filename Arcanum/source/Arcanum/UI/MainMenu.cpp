@@ -64,8 +64,9 @@ NewGame::NewGame(Canvas& canvas) :
 {
 }
 
-void NewGame::OnHover()
+void NewGame::OnHover(const Point& pos)
 {
+	UNUSED_PARAMETR(pos);
 }
 
 Exit::Exit(Canvas& canvas) :
@@ -73,6 +74,17 @@ Exit::Exit(Canvas& canvas) :
 {
 }
 
-void Exit::OnHover()
+void Exit::OnHover(const Point& pos)
 {
+	UNUSED_PARAMETR(pos);
+}
+
+Background::Background(Canvas& canvas) : 
+	GUI_Form(canvas)
+{
+}
+
+void Background::OnHover(const Point& pos)
+{
+	UNUSED_PARAMETR(pos);
 }
