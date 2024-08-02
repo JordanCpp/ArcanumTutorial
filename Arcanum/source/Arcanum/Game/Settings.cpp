@@ -27,6 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/Game/Settings.hpp>
 
 using namespace Arcanum;
+using namespace Pollux;
 
 const std::string& Settings::Title()
 {

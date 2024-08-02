@@ -27,14 +27,14 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_GUI_Button_hpp
 #define Arcanum_GUI_Button_hpp
 
-#include <Arcanum/Widgets/Button.hpp>
+#include <Pollux/Widgets/Button.hpp>
 
 namespace Arcanum
 {
-	class GUI_Button : public Button
+	class GUI_Button : public Pollux::Button
 	{
 	public:
-		GUI_Button(Canvas& canvas);
+		GUI_Button(Pollux::Canvas& canvas);
 		void DrawNormal();
 		void DrawHover();
 		void DrawActive();

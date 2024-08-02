@@ -28,26 +28,26 @@ DEALINGS IN THE SOFTWARE.
 #define Arcanum_Managers_TextureManager_hpp
 
 #include <map>
-#include <Arcanum/Graphics/Texture.hpp>
+#include <Pollux/Graphics/Texture.hpp>
 #include <Arcanum/Managers/FileManager.hpp>
-#include <Arcanum/Loaders/ImageLoader.hpp>
+#include <Pollux/Loaders/ImageLoader.hpp>
 
 namespace Arcanum
 {
 	class TextureManager
 	{
 	public:
-		TextureManager(Canvas* canvas, const Color& colorKey, FileManager& fileManager, ImageLoader& imageLoader);
+		TextureManager(Pollux::Canvas* canvas, const Pollux::Color& colorKey, FileManager& fileManager, Pollux::ImageLoader& imageLoader);
 		~TextureManager();
-		Texture* GetTexture(const std::string& path);
+		Pollux::Texture* GetTexture(const std::string& path);
 	private:
-		typedef std::map<std::string, Texture*> container;
+		typedef std::map<std::string, Pollux::Texture*> container;
 
-		Color        _ColorKey;
-		Canvas*      _Canvas;
-		FileManager& _FileManager;
-		ImageLoader& _ImageLoader;
-		container    _Textures;
+		Pollux::Color        _ColorKey;
+		Pollux::Canvas*      _Canvas;
+		FileManager&         _FileManager;
+		Pollux::ImageLoader& _ImageLoader;
+		container            _Textures;
 	};
 }
 

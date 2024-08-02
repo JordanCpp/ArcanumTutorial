@@ -27,6 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #include<Arcanum/Managers/FileManager.hpp>
 
 using namespace Arcanum;
+using namespace Pollux;
 
 FileManager::FileManager(FileLoader& fileLoader) :
 	_FileLoader(fileLoader)

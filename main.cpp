@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
 	{
 		Settings settings;
 		settings.Title("Arcanum Tutorial");
-		settings.WindowSize(Point(800, 600));
+		settings.WindowSize(Pollux::Point(800, 600));
 
 		Engine game(settings);
 		game.Run();

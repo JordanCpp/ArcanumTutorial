@@ -27,6 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/GUI/GUI_Button.hpp>
 
 using namespace Arcanum;
+using namespace Pollux;
 
 GUI_Button::GUI_Button(Canvas& canvas) :
 	Button(canvas)

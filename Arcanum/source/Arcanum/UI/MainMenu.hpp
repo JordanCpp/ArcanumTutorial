@@ -27,7 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_UI_MainMenu_hpp
 #define Arcanum_UI_MainMenu_hpp
 
-#include <Arcanum/UI/Screen.hpp>
+#include <Pollux/Widgets/Screen.hpp>
 #include <Arcanum/GUI/GUI_Button.hpp>
 #include <Arcanum/GUI/GUI_Form.hpp>
 #include <Arcanum/Config.hpp>
@@ -37,37 +37,37 @@ namespace Arcanum
 	class Background : public GUI_Form
 	{
 	public:
-		Background(Canvas& canvas);
-		void OnHover(const Point& pos);
+		Background(Pollux::Canvas& canvas);
+		void OnHover(const Pollux::Point& pos);
 	private:
 	};
 
 	class NewGame : public GUI_Button
 	{
 	public:
-		NewGame(Canvas& canvas);
-		void OnHover(const Point& pos);
+		NewGame(Pollux::Canvas& canvas);
+		void OnHover(const Pollux::Point& pos);
 	private:
 	};
 
 	class Exit : public GUI_Button
 	{
 	public:
-		Exit(Canvas& canvas);
-		void OnHover(const Point& pos);
+		Exit(Pollux::Canvas& canvas);
+		void OnHover(const Pollux::Point& pos);
 	private:
 	};
 
-	class MainMenu : public Screen
+	class MainMenu : public Pollux::Screen
 	{
 	public:
-		MainMenu(Canvas& canvas);
-		Form* GetForm();
+		MainMenu(Pollux::Canvas& canvas);
+		Pollux::Form* GetForm();
 		void Show();
 	private:
-		Canvas&      _Canvas;
+		Pollux::Canvas&      _Canvas;
 		Background   _Form;
-		FixedLayout  _Layout;
+		Pollux::FixedLayout  _Layout;
 		NewGame      _NewGame;
 		Exit         _Exit;
 	};

@@ -1,27 +1,30 @@
 call "C:\Downloads\codeblocks-12.11mingw-setup\MinGW\mingwvars.bat"
 
-g++ -Wall -Wextra -pedantic -O2 -std=c++11 -static -s -o GameSDL2 ^
+g++ -Wall -Wextra -pedantic -O2 -std=c++11 -static -s -o MinGW_SDL2 ^
 -I..\Arcanum\source ^
+-I..\Backends\Shared  ^
 -I..\Backends\SDL2  ^
 -I..\dependencies\SDL2-2.30.3\include ^
 -L..\dependencies\SDL2-2.30.3\lib\x86 ^
-..\Backends\SDL2\Arcanum\Graphics\*.cpp ^
-..\Backends\SDL2\Arcanum\Events\*.cpp ^
-..\Backends\SDL2\Arcanum\Time\*.cpp ^
+..\Backends\Shared\Pollux\Graphics\*.cpp  ^
+..\Backends\Shared\Pollux\Widgets\*.cpp ^
+..\Backends\Shared\Pollux\Time\*.cpp ^
+..\Backends\Shared\Pollux\Loaders\*.cpp ^
+..\Backends\Shared\Pollux\Readers\*.cpp ^
+..\Backends\Shared\Pollux\Common\*.cpp ^
+..\Backends\Shared\Pollux\Events\*.cpp ^
+..\Backends\SDL2\Pollux\Graphics\*.cpp ^
+..\Backends\SDL2\Pollux\Events\*.cpp ^
+..\Backends\SDL2\Pollux\Time\*.cpp ^
 ..\main.cpp ^
 ..\Arcanum\source\Arcanum\*.cpp ^
 ..\Arcanum\source\Arcanum\Common\*.cpp ^
 ..\Arcanum\source\Arcanum\Formats\*.cpp ^
 ..\Arcanum\source\Arcanum\Game\*.cpp ^
-..\Arcanum\source\Arcanum\Graphics\*.cpp ^
 ..\Arcanum\source\Arcanum\GUI\*.cpp ^
-..\Arcanum\source\Arcanum\Loaders\*.cpp ^
-..\Arcanum\source\Arcanum\Readers\*.cpp ^
-..\Arcanum\source\Arcanum\Time\*.cpp ^
 ..\Arcanum\source\Arcanum\Managers\*.cpp ^
 ..\Arcanum\source\Arcanum\Objects\*.cpp ^
 ..\Arcanum\source\Arcanum\Ui\*.cpp ^
-..\Arcanum\source\Arcanum\Widgets\*.cpp ^
 ..\dependencies\zlib\adler32.c ^
 ..\dependencies\zlib\compress.c ^
 ..\dependencies\zlib\crc32.c ^

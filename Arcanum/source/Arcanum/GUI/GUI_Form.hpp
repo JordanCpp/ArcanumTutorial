@@ -27,14 +27,14 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_GUI_Form_hpp
 #define Arcanum_GUI_Form_hpp
 
-#include <Arcanum/Widgets/Form.hpp>
+#include <Pollux/Widgets/Form.hpp>
 
 namespace Arcanum
 {
-	class GUI_Form : public Form
+	class GUI_Form : public Pollux::Form
 	{
 	public:
-		GUI_Form(Canvas& canvas);
+		GUI_Form(Pollux::Canvas& canvas);
 		void DrawNormal();
 		void DrawHover();
 		void DrawActive();

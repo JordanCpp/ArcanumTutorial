@@ -28,7 +28,7 @@ DEALINGS IN THE SOFTWARE.
 #define Arcanum_Game_Settings_hpp
 
 #include <string>
-#include <Arcanum/Graphics/Point.hpp>
+#include <Pollux/Graphics/Point.hpp>
 
 namespace Arcanum
 {
@@ -37,11 +37,11 @@ namespace Arcanum
 	public:
 		const std::string& Title();
 		void Title(const std::string& title);
-		const Point& WindowSize();
-		void WindowSize(const Point& size);
+		const Pollux::Point& WindowSize();
+		void WindowSize(const Pollux::Point& size);
 	private:
-		std::string _Title;
-		Point       _WindowSize;
+		std::string    _Title;
+		Pollux::Point  _WindowSize;
 	};
 }
 

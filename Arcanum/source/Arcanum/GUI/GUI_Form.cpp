@@ -27,6 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/GUI/GUI_Form.hpp>
 
 using namespace Arcanum;
+using namespace Pollux;
 
 GUI_Form::GUI_Form(Canvas& canvas) :
 	Form(canvas)

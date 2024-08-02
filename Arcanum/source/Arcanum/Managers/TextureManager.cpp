@@ -25,9 +25,10 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include <Arcanum/Managers/TextureManager.hpp>
-#include <Arcanum/Readers/MemoryReader.hpp>
+#include <Pollux/Readers/MemoryReader.hpp>
 
 using namespace Arcanum;
+using namespace Pollux;
 
 TextureManager::TextureManager(Canvas* canvas, const Color& colorKey, FileManager& fileManager, ImageLoader& imageLoader) :
 	_ColorKey(colorKey),

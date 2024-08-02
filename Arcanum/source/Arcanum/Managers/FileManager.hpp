@@ -24,20 +24,20 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Managers_FileManager_hpp
-#define Arcanum_Managers_FileManager_hpp
+#ifndef Pollux_Managers_FileManager_hpp
+#define Pollux_Managers_FileManager_hpp
 
-#include <Arcanum/Loaders/FileLoader.hpp>
+#include <Pollux/Loaders/FileLoader.hpp>
 
 namespace Arcanum
 {
 	class FileManager
 	{
 	public:
-		FileManager(FileLoader& fileLoader);
+		FileManager(Pollux::FileLoader& fileLoader);
 		const std::vector<unsigned char>& File(const std::string& path);
 	private:
-		FileLoader& _FileLoader;
+		Pollux::FileLoader& _FileLoader;
 	};
 }
 

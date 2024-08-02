@@ -24,10 +24,10 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include "Engine.hpp"
 #include <Arcanum/Engine.hpp>
 
 using namespace Arcanum;
+using namespace Pollux;
 
 const size_t fileLoaderMax = 1024 * 1024;
 

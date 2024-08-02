@@ -27,6 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/UI/MainMenu.hpp>
 
 using namespace Arcanum;
+using namespace Pollux;
 
 MainMenu::MainMenu(Canvas& canvas) :
 	_Canvas(canvas),

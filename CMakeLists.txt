@@ -1,14 +1,12 @@
-cmake_minimum_required(VERSION 2.9)
 
-#
-# Fix warnings
-#
 if (MSVC)
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
     add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)  
 endif()
 
 if (WIN32)
+    cmake_minimum_required(VERSION 2.9)
+
     set(SDL2_INCLUDE_DIRS "dependencies/SDL2-2.30.3/include")
     set(SDL2_LIBRARIES SDL2main SDL2)
 
@@ -43,10 +41,13 @@ file(GLOB ZLIB_SOURCES
 "dependencies/zlib/zutil.c")
 
 include_directories("Backends/SDL2")
-file(GLOB_RECURSE BACKEND_SOURCES "Backends/SDL2/Arcanum/*.cpp")
+file(GLOB_RECURSE BACKEND_SOURCES "Backends/SDL2/Pollux/*.cpp")
+
+include_directories("Backends/Shared")
+file(GLOB_RECURSE SHARED_SOURCES "Backends/Shared/Pollux/*.cpp")
 
 include_directories("Arcanum/source")
 file(GLOB_RECURSE ARCANUM_SOURCES "Arcanum/*.cpp")
 
-add_executable(Game "main.cpp" ${BACKEND_SOURCES} ${ARCANUM_SOURCES} ${ZLIB_SOURCES})
+add_executable(Game "main.cpp" ${BACKEND_SOURCES} ${SHARED_SOURCES} ${ARCANUM_SOURCES} ${ZLIB_SOURCES})
 target_link_libraries(Game ${SDL2_LIBRARIES})
