@@ -27,10 +27,10 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/Formats/DatLoader.hpp>
 #include <stdexcept>
 
-using namespace Aracnum;
+using namespace Arcanum;
 
-DatLoader::DatLoader(DatList* archiveList) :
-	_ArchiveList(archiveList)
+DatLoader::DatLoader(DatList& datList) :
+	_DatList(datList)
 {
 	_Result.reserve(DatLoader::Bytes);
 	_Buffer.reserve(DatLoader::Bytes);
@@ -41,7 +41,7 @@ std::vector<unsigned char>& DatLoader::GetData(const std::string& path)
 	_Result.clear();
 	_Buffer.clear();
 
-	DatItem* p = _ArchiveList->GetItem(path);
+	DatItem* p = _DatList.GetItem(path);
 
 	if (p != NULL)
 	{

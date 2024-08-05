@@ -29,7 +29,7 @@ DEALINGS IN THE SOFTWARE.
 
 #include <stddef.h>
 
-namespace Aracnum
+namespace Arcanum
 {
 	class Unpacker
 	{

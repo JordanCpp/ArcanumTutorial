@@ -13,6 +13,7 @@
 ..\Backends\Shared\Pollux\Readers\*.cpp ^
 ..\Backends\Shared\Pollux\Common\*.cpp ^
 ..\Backends\Shared\Pollux\Events\*.cpp ^
+..\Backends\Shared\Pollux\Managers\*.cpp ^
 ..\Backends\SDL1\Pollux\Graphics\*.cpp ^
 ..\Backends\SDL1\Pollux\Events\*.cpp ^
 ..\Backends\SDL1\Pollux\Time\*.cpp ^
@@ -20,6 +21,7 @@
 ..\Arcanum\source\Arcanum\*.cpp ^
 ..\Arcanum\source\Arcanum\Game\*.cpp ^
 ..\Arcanum\source\Arcanum\Common\*.cpp ^
+..\Arcanum\source\Arcanum\Creators\*.cpp ^
 ..\Arcanum\source\Arcanum\Formats\*.cpp ^
 ..\Arcanum\source\Arcanum\GUI\*.cpp ^
 ..\Arcanum\source\Arcanum\Managers\*.cpp ^

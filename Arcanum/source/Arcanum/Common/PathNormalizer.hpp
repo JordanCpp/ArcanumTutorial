@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace Aracnum
+namespace Arcanum
 {
 	class PathNormalizer
 	{

@@ -81,7 +81,7 @@ void Canvas::Present()
 	SDL_RenderPresent(_Render);
 }
 
-void Canvas::Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize)
+void Canvas::Draw(const Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize)
 {
 	assert(texture != NULL);
 	assert(dstPos.x >= 0);
@@ -101,7 +101,7 @@ void Canvas::Draw(Texture* texture, const Point& dstPos, const Point& dstSize, c
 	SDL_RenderCopy(_Render, impl->GetTextureImpl(), &srcRect, &dstRect);
 }
 
-void Canvas::Draw(Texture* texture, const Point& dstPos)
+void Canvas::Draw(const Texture* texture, const Point& dstPos)
 {
 	Draw(texture, dstPos, texture->Size(), Point(0, 0), texture->Size());
 }

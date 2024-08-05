@@ -84,7 +84,7 @@ void Canvas::Present()
 	}
 }
 
-void Canvas::Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize)
+void Canvas::Draw(const Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize)
 {
 	assert(texture != NULL);
 	assert(dstPos.x >= 0);
@@ -104,7 +104,7 @@ void Canvas::Draw(Texture* texture, const Point& dstPos, const Point& dstSize, c
 	SDL_BlitSurface(impl->GetTextureImpl(), &srcRect, _Screen, &dstRect);
 }
 
-void Canvas::Draw(Texture* texture, const Point& dstPos)
+void Canvas::Draw(const Texture* texture, const Point& dstPos)
 {
 	Draw(texture, dstPos, texture->Size(), Point(0, 0), texture->Size());
 }

@@ -24,72 +24,33 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include <Arcanum/Engine.hpp>
+#ifndef Arcanum_Creators_TileCreator_hpp
+#define Arcanum_Creators_TileCreator_hpp
 
-using namespace Arcanum;
-using namespace Pollux;
+#include <vector>
+#include <Arcanum/Creators/Creator.hpp>
+#include <Arcanum/Objects/Tile.hpp>
+#include <Arcanum/Objects/Critter.hpp>
 
-const size_t fileLoaderMax = 1024 * 1024;
-
-Engine::Engine(Settings& settings) :
-	_ColorKey(Color(0, 0, 255)),
-	_Settings(settings),
-	_Canvas(settings.WindowSize(), settings.Title()),
-	_FileLoader(fileLoaderMax),
-	_FileManager(_FileLoader),
-	_SpriteManager(_Canvas, _ColorKey, _FileManager, _ImageLoader, _TextureManager),
-	_MainMenu(_Canvas)
+namespace Arcanum
 {
-	_Handler.Add(&_MainMenu, "MainMenu");
-	_Handler.Active("MainMenu");
-
-	_Location.Tiles().resize(100 * 100);
-
-	DatList datList;
-	
-	DatReader datReader;
-	datReader.Reset("arcanum1.dat", datList);
-
-	DatLoader datLoader(datList);
-}
-
-Engine::~Engine()
-{
-}
-
-void Engine::Run()
-{
-	Event report;
-
-	while (_EventHandler.GetEvent(report))
+	class ObjectCreator
 	{
-		_FpsCounter.Start();
-
-		if (report.Type == IsEventQuit)
+	public:
+		enum
 		{
-			_EventHandler.StopEvent();
-		}
+			Tiles    = 100 * 100,
+			Critters = 1024
+		};
 
-		_Handler.Handle(report);
-
-		const Texture* texture = _SpriteManager.Get("data/art/tile/grsbse0c_0_0_0.bmp");
-		_Canvas.Draw(texture, Point(0, 0));
-
-		_ObjectCreator.Reset();
-
-		for (size_t i = 0; i < _Location.Tiles().size(); i++)
-		{
-			_Location.Tiles()[i] = _ObjectCreator.CreateTile();
-		}
-
-		_Handler.Show();
-
-		_Canvas.Present();
-
-		if (_FpsCounter.Calc())
-		{
-			_Canvas.Title(_IntToChars.Convert(_FpsCounter.Fps()));
-			_FpsCounter.Clear();
-		}
-	}
+		ObjectCreator();
+		void Reset();
+		Tile* CreateTile();
+		Critter* CreateCritter();
+	private:
+		Creator<Tile>    _Tiles;
+		Creator<Critter> _Critters;
+	};
 }
+
+#endif 

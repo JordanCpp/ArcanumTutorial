@@ -24,72 +24,42 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include <Arcanum/Engine.hpp>
+#ifndef Arcanum_Creators_Creator_hpp
+#define Arcanum_Creators_Creator_hpp
 
-using namespace Arcanum;
-using namespace Pollux;
+#include <vector>
+#include <stddef.h>
+#include <assert.h>
 
-const size_t fileLoaderMax = 1024 * 1024;
-
-Engine::Engine(Settings& settings) :
-	_ColorKey(Color(0, 0, 255)),
-	_Settings(settings),
-	_Canvas(settings.WindowSize(), settings.Title()),
-	_FileLoader(fileLoaderMax),
-	_FileManager(_FileLoader),
-	_SpriteManager(_Canvas, _ColorKey, _FileManager, _ImageLoader, _TextureManager),
-	_MainMenu(_Canvas)
+namespace Arcanum
 {
-	_Handler.Add(&_MainMenu, "MainMenu");
-	_Handler.Active("MainMenu");
-
-	_Location.Tiles().resize(100 * 100);
-
-	DatList datList;
-	
-	DatReader datReader;
-	datReader.Reset("arcanum1.dat", datList);
-
-	DatLoader datLoader(datList);
-}
-
-Engine::~Engine()
-{
-}
-
-void Engine::Run()
-{
-	Event report;
-
-	while (_EventHandler.GetEvent(report))
+	template <typename T>
+	class Creator
 	{
-		_FpsCounter.Start();
-
-		if (report.Type == IsEventQuit)
+	public:
+		Creator(size_t count)
 		{
-			_EventHandler.StopEvent();
+			_Objects.reserve(count);
 		}
 
-		_Handler.Handle(report);
-
-		const Texture* texture = _SpriteManager.Get("data/art/tile/grsbse0c_0_0_0.bmp");
-		_Canvas.Draw(texture, Point(0, 0));
-
-		_ObjectCreator.Reset();
-
-		for (size_t i = 0; i < _Location.Tiles().size(); i++)
+		void Reset()
 		{
-			_Location.Tiles()[i] = _ObjectCreator.CreateTile();
+			_Objects.clear();
 		}
-
-		_Handler.Show();
-
-		_Canvas.Present();
-
-		if (_FpsCounter.Calc())
+		
+		T* Create()
 		{
-			_Canvas.Title(_IntToChars.Convert(_FpsCounter.Fps()));
-			_FpsCounter.Clear();
+			size_t index = _Objects.size();
+
+			assert(index + 1 <= _Objects.capacity());
+
+			_Objects.resize(index + 1);
+
+			return &_Objects.at(index);
 		}
-	}
+	private:
+		std::vector<T> _Objects;
+	};
 }
+
+#endif 

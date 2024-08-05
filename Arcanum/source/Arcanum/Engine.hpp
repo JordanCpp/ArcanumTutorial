@@ -29,12 +29,17 @@ DEALINGS IN THE SOFTWARE.
 
 #include <Pollux/Graphics/Canvas.hpp>
 #include <Arcanum/Game/Settings.hpp>
-#include <Arcanum/Managers/TextureManager.hpp>
+#include <Arcanum/Managers/SpriteManager.hpp>
 #include <Pollux/Events/EventHandler.hpp>
 #include <Arcanum/UI/MainMenu.hpp>
 #include <Pollux/Events/Handler.hpp>
 #include <Pollux/Time/FpsCounter.hpp>
 #include <Pollux/Common/IntToChars.hpp>
+#include <Pollux/Managers/TextureManager.hpp>
+#include <Arcanum/Creators/ObjectCreator.hpp>
+#include <Arcanum/Objects/Location.hpp>
+#include <Arcanum/Formats/DatLoader.hpp>
+#include <Arcanum/Formats/DatReader.hpp>
 
 namespace Arcanum
 {
@@ -45,18 +50,21 @@ namespace Arcanum
 		~Engine();
 		void Run();
 	private:
-		Pollux::IntToChars   _IntToChars;
-		Pollux::FpsCounter   _FpsCounter;
-		Pollux::Color        _ColorKey;
-		Settings&            _Settings;
-		Pollux::Canvas       _Canvas;
-		Pollux::EventHandler _EventHandler;
-		Pollux::FileLoader   _FileLoader;
-		FileManager          _FileManager;
-		Pollux::ImageLoader  _ImageLoader;
-		TextureManager       _TextureManager;
-		MainMenu             _MainMenu;
-		Pollux::Handler      _Handler;
+		ObjectCreator          _ObjectCreator;
+		Pollux::IntToChars     _IntToChars;
+		Pollux::FpsCounter     _FpsCounter;
+		Pollux::Color          _ColorKey;
+		Settings&              _Settings;
+		Pollux::Canvas         _Canvas;
+		Pollux::EventHandler   _EventHandler;
+		Pollux::FileLoader     _FileLoader;
+		FileManager            _FileManager;
+		Pollux::ImageLoader    _ImageLoader;
+		Pollux::TextureManager _TextureManager;
+		SpriteManager          _SpriteManager;
+		MainMenu               _MainMenu;
+		Pollux::Handler        _Handler;
+		Location               _Location;
 	};
 }
 

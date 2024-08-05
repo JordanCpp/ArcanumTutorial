@@ -24,31 +24,39 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Managers_TextureManager_hpp
-#define Arcanum_Managers_TextureManager_hpp
+#include <Arcanum/Managers/SpriteManager.hpp>
+#include <Pollux/Readers/MemoryReader.hpp>
 
-#include <map>
-#include <Pollux/Graphics/Texture.hpp>
-#include <Arcanum/Managers/FileManager.hpp>
-#include <Pollux/Loaders/ImageLoader.hpp>
+using namespace Arcanum;
+using namespace Pollux;
 
-namespace Arcanum
+SpriteManager::SpriteManager(Canvas& canvas, const Color& colorKey, FileManager& fileManager, ImageLoader& imageLoader, Pollux::TextureManager& textureManager) :
+	_TextureManager(textureManager),
+	_ColorKey(colorKey),
+	_Canvas(canvas),
+	_FileManager(fileManager),
+	_ImageLoader(imageLoader)
 {
-	class TextureManager
-	{
-	public:
-		TextureManager(Pollux::Canvas* canvas, const Pollux::Color& colorKey, FileManager& fileManager, Pollux::ImageLoader& imageLoader);
-		~TextureManager();
-		Pollux::Texture* GetTexture(const std::string& path);
-	private:
-		typedef std::map<std::string, Pollux::Texture*> container;
-
-		Pollux::Color        _ColorKey;
-		Pollux::Canvas*      _Canvas;
-		FileManager&         _FileManager;
-		Pollux::ImageLoader& _ImageLoader;
-		container            _Textures;
-	};
 }
 
-#endif 
+SpriteManager::~SpriteManager()
+{
+}
+
+const Texture* SpriteManager::Get(const std::string& path) const
+{
+	const Texture* result = _TextureManager.Get(path);
+
+	if (result == NULL)
+	{
+		_ImageLoader.Load(_FileManager.File(path));
+
+		result = new Texture(_Canvas, _ImageLoader.Size(), _ImageLoader.Bpp(), _ImageLoader.Pixels(), _ColorKey);
+
+		_TextureManager.Add(path, result);
+
+		return result;
+	}
+
+	return result;
+}

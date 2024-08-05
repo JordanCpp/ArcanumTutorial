@@ -24,12 +24,12 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Aracnum_Formats_ArtReader_hpp
-#define Aracnum_Formats_ArtReader_hpp
+#ifndef Arcanum_Formats_ArtReader_hpp
+#define Arcanum_Formats_ArtReader_hpp
 
 #include <Arcanum/Formats/Art.hpp>
 
-namespace Aracnum
+namespace Arcanum
 {
     class ArtReader
     {

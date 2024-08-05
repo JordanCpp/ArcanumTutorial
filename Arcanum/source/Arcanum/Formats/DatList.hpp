@@ -24,14 +24,14 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Aracnum_Formats_DatList_hpp
-#define Aracnum_Formats_DatList_hpp
+#ifndef Arcanum_Formats_DatList_hpp
+#define Arcanum_Formats_DatList_hpp
 
 #include <string>
 #include <map>
 #include <Arcanum/Formats/DatItem.hpp>
 
-namespace Aracnum
+namespace Arcanum
 {
     class DatList
     {

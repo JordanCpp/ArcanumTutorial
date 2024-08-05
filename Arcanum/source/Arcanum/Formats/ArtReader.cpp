@@ -26,4 +26,4 @@ DEALINGS IN THE SOFTWARE.
 
 #include <Arcanum/Formats/ArtReader.hpp>
 
-using namespace Aracnum;
+using namespace Arcanum;

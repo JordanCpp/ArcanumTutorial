@@ -24,44 +24,25 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include <Arcanum/Managers/TextureManager.hpp>
-#include <Pollux/Readers/MemoryReader.hpp>
+#include <Pollux/Creators/TextureCreator.hpp>
 
-using namespace Arcanum;
 using namespace Pollux;
 
-TextureManager::TextureManager(Canvas* canvas, const Color& colorKey, FileManager& fileManager, ImageLoader& imageLoader) :
-	_ColorKey(colorKey),
-	_Canvas(canvas),
-	_FileManager(fileManager),
-	_ImageLoader(imageLoader)
+TextureCreator::TextureCreator(Canvas& canvas) :
+	_Canvas(canvas)
 {
 }
 
-TextureManager::~TextureManager()
+const Texture* TextureCreator::Create(const Point& size, unsigned char bpp, unsigned char* pixels)
 {
-	for (container::iterator i = _Textures.begin(); i != _Textures.end(); i++)
-	{
-		delete i->second;
-	}
+	const Texture* result = new Texture(_Canvas, size, bpp, pixels);
+
+	return result;
 }
 
-Texture* TextureManager::GetTexture(const std::string& path)
+const Texture* TextureCreator::Create(const Point& size, unsigned char bpp, unsigned char* pixels, const Color& key)
 {
-	container::iterator i = _Textures.find(path);
+	const Texture* result = new Texture(_Canvas, size, bpp, pixels, key);
 
-	Texture* result = NULL;
-
-	if (i == _Textures.end())
-	{
-		_ImageLoader.Load(_FileManager.File(path));
-
-		result = new Texture(_Canvas, _ImageLoader.Size(), _ImageLoader.Bpp(), _ImageLoader.Pixels(), _ColorKey);
-
-		_Textures.insert(std::make_pair(path, result));
-
-		return result;
-	}
-
-	return i->second;
+	return result;
 }

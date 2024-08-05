@@ -26,7 +26,7 @@ DEALINGS IN THE SOFTWARE.
 
 #include <Arcanum/Formats/DatList.hpp>
 
-using namespace Aracnum;
+using namespace Arcanum;
 
 DatItem* DatList::GetItem(const std::string& file)
 {

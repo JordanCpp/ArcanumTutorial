@@ -47,8 +47,8 @@ namespace Pollux
 		const Point& Size() const;
 		void Fill(const Point& pos, const Point& size, const Color& color) const;
 		void Present();
-		void Draw(Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
-		void Draw(Texture* texture, const Point& dstPos);
+		void Draw(const Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
+		void Draw(const Texture* texture, const Point& dstPos);
 		SDL_Renderer* GetRenderImpl();
 	private:
 		SDL_Window*   _Window;

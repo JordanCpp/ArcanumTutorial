@@ -39,11 +39,11 @@ namespace Pollux
 	class Texture
 	{
 	public:
-		Texture(Canvas* canvas, const Point& size, unsigned char bpp, unsigned char* pixels);
-		Texture(Canvas* canvas, const Point& size, unsigned char bpp, unsigned char* pixels, const Color& key);
+		Texture(Canvas& canvas, const Point& size, unsigned char bpp, unsigned char* pixels);
+		Texture(Canvas& canvas, const Point& size, unsigned char bpp, unsigned char* pixels, const Color& key);
 		~Texture();
 		SDL_Surface* GetTextureImpl();
-		const Point& Size();
+		const Point& Size() const;
 	private:
 		SDL_Surface* _Texture;
 		Point        _Size;

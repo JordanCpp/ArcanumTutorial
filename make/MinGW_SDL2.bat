@@ -13,12 +13,14 @@ g++ -Wall -Wextra -pedantic -O2 -std=c++11 -static -s -o MinGW_SDL2 ^
 ..\Backends\Shared\Pollux\Readers\*.cpp ^
 ..\Backends\Shared\Pollux\Common\*.cpp ^
 ..\Backends\Shared\Pollux\Events\*.cpp ^
+..\Backends\Shared\Pollux\Managers\*.cpp ^
 ..\Backends\SDL2\Pollux\Graphics\*.cpp ^
 ..\Backends\SDL2\Pollux\Events\*.cpp ^
 ..\Backends\SDL2\Pollux\Time\*.cpp ^
 ..\main.cpp ^
 ..\Arcanum\source\Arcanum\*.cpp ^
 ..\Arcanum\source\Arcanum\Common\*.cpp ^
+..\Arcanum\source\Arcanum\Creators\*.cpp ^
 ..\Arcanum\source\Arcanum\Formats\*.cpp ^
 ..\Arcanum\source\Arcanum\Game\*.cpp ^
 ..\Arcanum\source\Arcanum\GUI\*.cpp ^

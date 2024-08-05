@@ -24,15 +24,15 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Aracnum_Formats_DatLoader_hpp
-#define Aracnum_Formats_DatLoader_hpp
+#ifndef Arcanum_Formats_DatLoader_hpp
+#define Arcanum_Formats_DatLoader_hpp
 
 #include <fstream>
 #include <vector>
 #include <Arcanum/Formats/DatList.hpp>
 #include <Arcanum/Formats/Unpacker.hpp>
 
-namespace Aracnum
+namespace Arcanum
 {
 	class DatLoader
 	{
@@ -41,14 +41,14 @@ namespace Aracnum
 		{
 			Bytes = 1024 * 1024
 		};
-		DatLoader(DatList* archiveList);
+		DatLoader(DatList& datList);
 		std::vector<unsigned char>& GetData(const std::string& path);
 	private:
-		Unpacker              _Unpacker;
-		std::ifstream         _File;
+		Unpacker                    _Unpacker;
+		std::ifstream               _File;
 		std::vector<unsigned char>  _Result;
 		std::vector<unsigned char>  _Buffer;
-		DatList*              _ArchiveList;
+		DatList&                    _DatList;
 	};
 }
 

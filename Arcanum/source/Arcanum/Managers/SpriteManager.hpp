@@ -24,9 +24,29 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Arcanum_Config_hpp
-#define Arcanum_Config_hpp
+#ifndef Arcanum_Managers_SpriteManager_hpp
+#define Arcanum_Managers_SpriteManager_hpp
 
-#define UNUSED_PARAMETR(x) (void)(x)
+#include <Pollux/Graphics/Texture.hpp>
+#include <Arcanum/Managers/FileManager.hpp>
+#include <Pollux/Loaders/ImageLoader.hpp>
+#include <Pollux/Managers/TextureManager.hpp>
+
+namespace Arcanum
+{
+	class SpriteManager
+	{
+	public:
+		SpriteManager(Pollux::Canvas& canvas, const Pollux::Color& colorKey, FileManager& fileManager, Pollux::ImageLoader& imageLoader, Pollux::TextureManager& textureManager);
+		~SpriteManager();
+		const Pollux::Texture* Get(const std::string& path) const;
+	private:
+		Pollux::TextureManager& _TextureManager;
+		Pollux::Color           _ColorKey;
+		Pollux::Canvas&         _Canvas;
+		FileManager&            _FileManager;
+		Pollux::ImageLoader&    _ImageLoader;
+	};
+}
 
 #endif 

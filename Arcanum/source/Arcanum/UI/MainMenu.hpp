@@ -30,7 +30,7 @@ DEALINGS IN THE SOFTWARE.
 #include <Pollux/Widgets/Screen.hpp>
 #include <Arcanum/GUI/GUI_Button.hpp>
 #include <Arcanum/GUI/GUI_Form.hpp>
-#include <Arcanum/Config.hpp>
+#include <Pollux/Config.hpp>
 
 namespace Arcanum
 {

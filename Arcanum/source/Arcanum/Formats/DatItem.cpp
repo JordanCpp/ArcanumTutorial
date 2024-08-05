@@ -27,7 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/Formats/DatItem.hpp>
 #include <string.h>
 
-using namespace Aracnum;
+using namespace Arcanum;
 
 DatItem::DatItem() :
 	NameSize(0),

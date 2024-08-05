@@ -25,6 +25,7 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include <Pollux/Graphics/Texture.hpp>
+#include <Pollux/Config.hpp>
 #include <stdexcept>
 #include <cassert>
 
@@ -44,11 +45,12 @@ const uint32_t A_MASK = 0xff000000;
 
 const uint8_t bitSize = 8;
 
-Texture::Texture(Canvas* canvas, const Point& size, unsigned char bpp, unsigned char* pixels) :
+Texture::Texture(Canvas& canvas, const Point& size, unsigned char bpp, unsigned char* pixels) :
     _Texture(NULL),
     _Size(size)
 {
-    assert(canvas != NULL);
+    UNUSED_PARAMETR(canvas);
+
     assert(size.x > 0);
     assert(size.y > 0);
     assert(pixels != NULL);
@@ -59,11 +61,12 @@ Texture::Texture(Canvas* canvas, const Point& size, unsigned char bpp, unsigned 
        throw std::runtime_error(SDL_GetError());
 }
 
-Texture::Texture(Canvas* canvas, const Point& size, unsigned char bpp, unsigned char* pixels, const Color& key) :
+Texture::Texture(Canvas& canvas, const Point& size, unsigned char bpp, unsigned char* pixels, const Color& key) :
     _Texture(NULL),
     _Size(size)
 {
-    assert(canvas != NULL);
+    UNUSED_PARAMETR(canvas);
+
     assert(size.x > 0);
     assert(size.y > 0);
     assert(pixels != NULL);
@@ -93,7 +96,7 @@ SDL_Surface* Texture::GetTextureImpl()
     return _Texture;
 }
 
-const Point& Texture::Size()
+const Point& Texture::Size() const
 {
 	return _Size;
 }

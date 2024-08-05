@@ -44,11 +44,10 @@ const uint32_t A_MASK = 0xff000000;
 
 const uint8_t bitSize = 8;
 
-Texture::Texture(Canvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels) :
+Texture::Texture(Canvas& canvas, const Point& size, uint8_t bpp, uint8_t* pixels) :
     _Texture(NULL),
     _Size(size)
 {
-    assert(canvas != NULL);
     assert(size.x > 0);
     assert(size.y > 0);
     assert(pixels != NULL);
@@ -58,7 +57,7 @@ Texture::Texture(Canvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels
     if (!surface)
         throw std::runtime_error(SDL_GetError());
 
-    Canvas* impl = (Canvas*)canvas;
+    Canvas* impl = (Canvas*)&canvas;
     
     _Texture = SDL_CreateTextureFromSurface(impl->GetRenderImpl(), surface);
 
@@ -68,11 +67,10 @@ Texture::Texture(Canvas* canvas, const Point& size, uint8_t bpp, uint8_t* pixels
     SDL_FreeSurface(surface);
 }
 
-Texture::Texture(Canvas* canvas, const Point& size, unsigned char bpp, unsigned char* pixels, const Color& key) :
+Texture::Texture(Canvas& canvas, const Point& size, unsigned char bpp, unsigned char* pixels, const Color& key) :
     _Texture(NULL),
     _Size(size)
 {
-    assert(canvas != NULL);
     assert(size.x > 0);
     assert(size.y > 0);
     assert(pixels != NULL);
@@ -91,7 +89,7 @@ Texture::Texture(Canvas* canvas, const Point& size, unsigned char bpp, unsigned 
         throw std::runtime_error(SDL_GetError());
     }
 
-    Canvas* impl = (Canvas*)canvas;
+    Canvas* impl = (Canvas*)&canvas;
 
     _Texture = SDL_CreateTextureFromSurface(impl->GetRenderImpl(), surface);
 
@@ -111,7 +109,7 @@ SDL_Texture* Texture::GetTextureImpl()
     return _Texture;
 }
 
-const Point& Texture::Size()
+const Point& Texture::Size() const
 {
 	return _Size;
 }

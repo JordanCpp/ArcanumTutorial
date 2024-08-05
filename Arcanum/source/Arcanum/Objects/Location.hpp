@@ -27,12 +27,17 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Objects_Location_hpp
 #define Arcanum_Objects_Location_hpp
 
+#include <vector>
+#include <Arcanum/Objects/Tile.hpp>
+
 namespace Arcanum
 {
 	class Location
 	{
 	public:
+		std::vector<Tile*>& Tiles();
 	private:
+		std::vector<Tile*> _Tiles;
 	};
 }
 

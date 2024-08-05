@@ -27,7 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/Formats/Unpacker.hpp>
 #include <zlib.h>
 
-namespace Aracnum
+namespace Arcanum
 {
 	bool Unpacker::Uncompress(unsigned char* dest, size_t destSize, unsigned char* src, size_t srcSize)
 	{

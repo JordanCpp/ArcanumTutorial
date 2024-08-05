@@ -27,7 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/Formats/DatReader.hpp>
 #include <string.h>
 
-using namespace Aracnum;
+using namespace Arcanum;
 
 bool DatReader::Reset(const std::string& file, DatList& archiveList)
 {

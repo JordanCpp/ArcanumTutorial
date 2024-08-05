@@ -27,3 +27,8 @@ DEALINGS IN THE SOFTWARE.
 #include <Arcanum/Objects/Location.hpp>
 
 using namespace Arcanum;
+
+std::vector<Tile*>& Location::Tiles()
+{
+	return _Tiles;
+}

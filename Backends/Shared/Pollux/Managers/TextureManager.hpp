@@ -24,72 +24,26 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#include <Arcanum/Engine.hpp>
+#ifndef Pollux_Managers_TextureManager_hpp
+#define Pollux_Managers_TextureManager_hpp
 
-using namespace Arcanum;
-using namespace Pollux;
+#include <map>
+#include <string>
+#include <Pollux/Graphics/Texture.hpp>
 
-const size_t fileLoaderMax = 1024 * 1024;
-
-Engine::Engine(Settings& settings) :
-	_ColorKey(Color(0, 0, 255)),
-	_Settings(settings),
-	_Canvas(settings.WindowSize(), settings.Title()),
-	_FileLoader(fileLoaderMax),
-	_FileManager(_FileLoader),
-	_SpriteManager(_Canvas, _ColorKey, _FileManager, _ImageLoader, _TextureManager),
-	_MainMenu(_Canvas)
+namespace Pollux
 {
-	_Handler.Add(&_MainMenu, "MainMenu");
-	_Handler.Active("MainMenu");
-
-	_Location.Tiles().resize(100 * 100);
-
-	DatList datList;
-	
-	DatReader datReader;
-	datReader.Reset("arcanum1.dat", datList);
-
-	DatLoader datLoader(datList);
-}
-
-Engine::~Engine()
-{
-}
-
-void Engine::Run()
-{
-	Event report;
-
-	while (_EventHandler.GetEvent(report))
+	class TextureManager
 	{
-		_FpsCounter.Start();
-
-		if (report.Type == IsEventQuit)
-		{
-			_EventHandler.StopEvent();
-		}
-
-		_Handler.Handle(report);
-
-		const Texture* texture = _SpriteManager.Get("data/art/tile/grsbse0c_0_0_0.bmp");
-		_Canvas.Draw(texture, Point(0, 0));
-
-		_ObjectCreator.Reset();
-
-		for (size_t i = 0; i < _Location.Tiles().size(); i++)
-		{
-			_Location.Tiles()[i] = _ObjectCreator.CreateTile();
-		}
-
-		_Handler.Show();
-
-		_Canvas.Present();
-
-		if (_FpsCounter.Calc())
-		{
-			_Canvas.Title(_IntToChars.Convert(_FpsCounter.Fps()));
-			_FpsCounter.Clear();
-		}
-	}
+	public:
+		TextureManager();
+		~TextureManager();
+		const Texture* Get(const std::string& name);
+		void Add(const std::string& name, const Texture* texture);
+	private:
+		typedef std::map<std::string, const Texture*> container;
+		container _Textures;
+	};
 }
+
+#endif 

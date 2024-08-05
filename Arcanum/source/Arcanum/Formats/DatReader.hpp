@@ -24,14 +24,14 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Aracnum_Formats_DatReader_hpp
-#define Aracnum_Formats_DatReader_hpp
+#ifndef Arcanum_Formats_DatReader_hpp
+#define Arcanum_Formats_DatReader_hpp
 
 #include <Arcanum/Formats/DatList.hpp>
 #include <Arcanum/Common/PathNormalizer.hpp>
 #include <fstream>
 
-namespace Aracnum
+namespace Arcanum
 {
     class DatReader
     {

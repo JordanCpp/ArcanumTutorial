@@ -24,10 +24,10 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Aracnum_Formats_DatItem_hpp
-#define Aracnum_Formats_DatItem_hpp
+#ifndef Arcanum_Formats_DatItem_hpp
+#define Arcanum_Formats_DatItem_hpp
 
-namespace Aracnum
+namespace Arcanum
 {
     class DatItem
     {
