@@ -1,7 +1,7 @@
 #ifndef Aracnum_Common_PathNormalizer_hpp
 #define Aracnum_Common_PathNormalizer_hpp
 
-#include <string>
+#include <Pollux/Containers/String.hpp>
 
 namespace Arcanum
 {
@@ -9,7 +9,7 @@ namespace Arcanum
 	{
 	public:
 		void Normalize(char* path);
-		void Normalize(std::string& path);
+		void Normalize(Pollux::String& path);
 	private:
 	};
 }

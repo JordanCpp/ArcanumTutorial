@@ -28,7 +28,7 @@ DEALINGS IN THE SOFTWARE.
 #define Pollux_Graphics_Canvas_hpp
 
 #include <SDL.h>
-#include <string>
+#include <Pollux/Containers/String.hpp>
 #include <Pollux/Graphics/Canvas.hpp>
 #include <Pollux/Graphics/Point.hpp>
 #include <Pollux/Events/Event.hpp>
@@ -41,9 +41,9 @@ namespace Pollux
 	class Canvas
 	{
 	public:
-		Canvas(const Point& size, const std::string& title);
+		Canvas(const Point& size, const String& title);
 		~Canvas();
-		void Title(const std::string& title);
+		void Title(const String& title);
 		const Point& Size() const;
 		void Fill(const Point& pos, const Point& size, const Color& color) const;
 		void Present();

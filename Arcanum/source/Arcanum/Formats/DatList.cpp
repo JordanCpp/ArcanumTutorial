@@ -25,17 +25,32 @@ DEALINGS IN THE SOFTWARE.
 */
 
 #include <Arcanum/Formats/DatList.hpp>
+#include <string.h>
 
 using namespace Arcanum;
 
 DatItem* DatList::GetItem(const std::string& file)
 {
-	std::map<std::string, DatItem>::iterator i = m_List.find(file);
+	container::iterator i = _Items.find(file);
 
-	if (i != m_List.end())
+	if (i != _Items.end())
 	{
 		return &i->second;
 	}
 
 	return NULL;
+}
+
+void DatList::Add(const Pollux::String& key, DatItem& item, const Pollux::String& archive)
+{
+	DatItem* p = GetItem(key);
+
+	if (p == NULL)
+	{
+		_Items.insert(std::make_pair(key, item));
+	}
+	else
+	{
+		strcpy(p->Archive, archive.c_str());
+	}
 }

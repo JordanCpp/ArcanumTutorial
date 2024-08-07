@@ -24,37 +24,17 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef Pollux_Graphics_Canvas_hpp
-#define Pollux_Graphics_Canvas_hpp
+#ifndef Pollux_Containers_Map_hpp
+#define Pollux_Containers_Map_hpp
 
-#include <SDL.h>
-#include <Pollux/Containers/String.hpp>
-#include <Pollux/Graphics/Canvas.hpp>
-#include <Pollux/Graphics/Point.hpp>
-#include <Pollux/Events/Event.hpp>
-#include <Pollux/Graphics/Color.hpp>
-
-#define SDL_main main
+#include <map>
 
 namespace Pollux
 {
-	class Texture;
-
-	class Canvas
-	{
-	public:
-		Canvas(const Point& size, const String& title);
-		~Canvas();
-		void Title(const std::string& title);
-		const Point& Size() const;
-		void Fill(const Point& pos, const Point& size, const Color& color) const;
-		void Present();
-		void Draw(const Texture* texture, const Point& dstPos, const Point& dstSize, const Point& srcPos, const Point& srcSize);
-		void Draw(const Texture* texture, const Point& dstPos);
-	private:
-		SDL_Surface* _Screen;
-		Point        _Size;
-	};
+    template<typename T, typename K>
+    struct Map : public std::map<T, K>
+    {
+    };
 }
 
 #endif 

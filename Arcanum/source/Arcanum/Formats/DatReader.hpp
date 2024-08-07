@@ -36,10 +36,9 @@ namespace Arcanum
     class DatReader
     {
     public:
-        bool Reset(const std::string& file, DatList& archiveList);
+        bool Reset(const std::string& file, DatList& datList);
     private:
         PathNormalizer _PathNormalizer;
-        std::string    _Name;
         std::ifstream  _File;
     };
 }

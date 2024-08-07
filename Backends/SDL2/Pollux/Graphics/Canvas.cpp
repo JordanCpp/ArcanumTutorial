@@ -31,7 +31,7 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Pollux;
 
-Canvas::Canvas(const Point& size, const std::string& title) :
+Canvas::Canvas(const Point& size, const String& title) :
 	_Window(NULL),
 	_Render(NULL),
 	_Size(size)
@@ -57,7 +57,7 @@ Canvas::~Canvas()
 	SDL_Quit();
 }
 
-void Canvas::Title(const std::string& title)
+void Canvas::Title(const String& title)
 {
 	SDL_SetWindowTitle(_Window, title.c_str());
 }

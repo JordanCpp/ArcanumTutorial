@@ -29,7 +29,7 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Arcanum;
 
-bool DatReader::Reset(const std::string& file, DatList& archiveList)
+bool DatReader::Reset(const std::string& file, DatList& datList)
 {
 	if (_File.is_open())
 		_File.close();
@@ -58,25 +58,15 @@ bool DatReader::Reset(const std::string& file, DatList& archiveList)
 
 			_PathNormalizer.Normalize(item.Name);
 
-			_File.read((char*)&item.Unknown1, 0x04);
-			_File.read((char*)&item.Type, 0x04);
-			_File.read((char*)&item.RealSize, 0x04);
+			_File.read((char*)&item.Unknown1,   0x04);
+			_File.read((char*)&item.Type,       0x04);
+			_File.read((char*)&item.RealSize,   0x04);
 			_File.read((char*)&item.PackedSize, 0x04);
-			_File.read((char*)&item.Offset, 0x04);
+			_File.read((char*)&item.Offset,     0x04);
 
 			strcpy(item.Archive, file.c_str());
 
-			std::map<std::string, DatItem>::iterator j = archiveList.m_List.find(item.Name);
-
-			if (j == archiveList.m_List.end())
-			{
-				_Name = item.Name;
-				archiveList.m_List.insert(std::make_pair(_Name, item));
-			}
-			else
-			{
-				strcpy(j->second.Archive, file.c_str());
-			}
+			datList.Add(item.Name, item, file);
 		}
 
 		_File.close();

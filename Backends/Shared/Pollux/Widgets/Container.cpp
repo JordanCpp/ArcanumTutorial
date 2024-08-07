@@ -33,7 +33,7 @@ void Container::Add(Widget* widget)
 	_Widgets.push_back(widget);
 }
 
-std::vector<Widget*>& Container::Widgets()
+Vector<Widget*>& Container::Widgets()
 {
 	return _Widgets;
 }

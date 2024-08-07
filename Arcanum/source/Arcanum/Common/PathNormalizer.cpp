@@ -15,7 +15,7 @@ void PathNormalizer::Normalize(char* path)
 	}
 }
 
-void PathNormalizer::Normalize(std::string& path)
+void PathNormalizer::Normalize(Pollux::String& path)
 {
 	Normalize((char*)path.c_str());
 }

@@ -29,12 +29,12 @@ DEALINGS IN THE SOFTWARE.
 using namespace Arcanum;
 using namespace Pollux;
 
-const std::string& Settings::Title()
+const Pollux::String& Settings::Title()
 {
 	return _Title;
 }
 
-void Settings::Title(const std::string& title)
+void Settings::Title(const Pollux::String& title)
 {
 	_Title = title;
 }

@@ -27,8 +27,8 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Formats_DatList_hpp
 #define Arcanum_Formats_DatList_hpp
 
-#include <string>
-#include <map>
+#include <Pollux/Containers/String.hpp>
+#include <Pollux/Containers/Map.hpp>
 #include <Arcanum/Formats/DatItem.hpp>
 
 namespace Arcanum
@@ -37,7 +37,10 @@ namespace Arcanum
     {
     public:
         DatItem* GetItem(const std::string& file);
-        std::map<std::string, DatItem> m_List;
+        void Add(const Pollux::String& key, DatItem& item, const Pollux::String& archive);
+    private:
+        typedef Pollux::Map<Pollux::String, DatItem> container;
+        container _Items;
     };
 }
 

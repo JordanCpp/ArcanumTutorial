@@ -27,7 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Pollux_Widgets_Container_hpp
 #define Pollux_Widgets_Container_hpp
 
-#include <vector>
+#include <Pollux/Containers/Vector.hpp>
 #include <Pollux/Widgets/Widget.hpp>
 
 namespace Pollux
@@ -35,10 +35,10 @@ namespace Pollux
 	class Container
 	{
 	public:
-		std::vector<Widget*>& Widgets();
+		Vector<Widget*>& Widgets();
 		void Add(Widget* widget);
 	private:
-		std::vector<Widget*> _Widgets;
+		Vector<Widget*> _Widgets;
 	};
 }
 

@@ -31,7 +31,7 @@ DEALINGS IN THE SOFTWARE.
 
 using namespace Pollux;
 
-Canvas::Canvas(const Point& size, const std::string& title) :
+Canvas::Canvas(const Point& size, const String& title) :
 	_Screen(NULL),
 	_Size(size)
 {

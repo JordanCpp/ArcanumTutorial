@@ -28,7 +28,7 @@ DEALINGS IN THE SOFTWARE.
 #define Arcanum_Formats_DatLoader_hpp
 
 #include <fstream>
-#include <vector>
+#include <Pollux/Containers/Vector.hpp>
 #include <Arcanum/Formats/DatList.hpp>
 #include <Arcanum/Formats/Unpacker.hpp>
 
@@ -44,11 +44,11 @@ namespace Arcanum
 		DatLoader(DatList& datList);
 		std::vector<unsigned char>& GetData(const std::string& path);
 	private:
-		Unpacker                    _Unpacker;
-		std::ifstream               _File;
-		std::vector<unsigned char>  _Result;
-		std::vector<unsigned char>  _Buffer;
-		DatList&                    _DatList;
+		Unpacker                       _Unpacker;
+		std::ifstream                  _File;
+		Pollux::Vector<unsigned char>  _Result;
+		Pollux::Vector<unsigned char>  _Buffer;
+		DatList&                       _DatList;
 	};
 }
 

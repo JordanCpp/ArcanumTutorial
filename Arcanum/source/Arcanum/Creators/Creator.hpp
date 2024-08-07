@@ -27,7 +27,7 @@ DEALINGS IN THE SOFTWARE.
 #ifndef Arcanum_Creators_Creator_hpp
 #define Arcanum_Creators_Creator_hpp
 
-#include <vector>
+#include <Pollux/Containers/Vector.hpp>
 #include <stddef.h>
 #include <assert.h>
 
@@ -58,7 +58,7 @@ namespace Arcanum
 			return &_Objects.at(index);
 		}
 	private:
-		std::vector<T> _Objects;
+		Pollux::Vector<T> _Objects;
 	};
 }
 
